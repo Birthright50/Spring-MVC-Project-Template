@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="SpringJavaConfig:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="Auto Service.war">
+      <element id="artifact" artifact-name="SpringJavaConfig:war exploded" />
+    </root>
+  </artifact>
+</component>
