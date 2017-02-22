@@ -5,11 +5,12 @@
           http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.birthright</groupId>
-    <artifactId>AutoService</artifactId>
+    <artifactId>spring_tmp</artifactId>
 
     <version>1.0</version>
     <packaging>war</packaging>
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- Generic properties -->
         <java.version>1.8</java.version>
         <!--Java standard tag library-->
@@ -27,7 +28,7 @@
         <spring-security.version>4.2.1.RELEASE</spring-security.version>
 
         <!-- Hibernate / JPA -->
-        <hibernate.version>5.2.6.Final</hibernate.version>
+        <hibernate.version>5.2.7.Final</hibernate.version>
         <hibernate-validator.version>5.3.4.Final</hibernate-validator.version>
 
         <!-- The Compiler Plugin is used to compile the sources of your project. -->
@@ -61,7 +62,6 @@
     </properties>
 
     <dependencies>
-
         <!--Servlet API-->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -112,6 +112,11 @@
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>javax.mail-api</artifactId>
+            <version>${javax.mail-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
             <version>${javax.mail-api.version}</version>
         </dependency>
 
@@ -221,12 +226,6 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
             <version>${spring.data.version}</version>
-            <!--<exclusions>-->
-                <!--<exclusion>-->
-                    <!--<artifactId>jcl-over-slf4j</artifactId>-->
-                    <!--<groupId>org.slf4j</groupId>-->
-                <!--</exclusion>-->
-            <!--</exclusions>-->
         </dependency>
         <dependency>
             <groupId>com.querydsl</groupId>
@@ -237,6 +236,7 @@
             <groupId>com.querydsl</groupId>
             <artifactId>querydsl-apt</artifactId>
             <version>4.1.4</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.querydsl</groupId>
@@ -262,22 +262,36 @@
     <build>
         <pluginManagement>
             <plugins>
+
                 <plugin>
-                    <groupId>com.mysema.maven</groupId>
-                    <artifactId>maven-apt-plugin</artifactId>
-                    <version>1.1.3</version>
+                    <groupId>com.querydsl</groupId>
+                    <artifactId>querydsl-maven-plugin</artifactId>
+                    <version>4.0.7</version>
                     <executions>
                         <execution>
-                            <phase>generate-sources</phase>
+                            <id>apt-maven-plugin-remote-module-QuerydslAnnotationProcessor</id>
                             <goals>
                                 <goal>process</goal>
                             </goals>
                             <configuration>
+                                <phase>process-classes</phase>
                                 <outputDirectory>target/generated-sources/java</outputDirectory>
+                                <options>
+                                    <querydsl.entityAccessors>true</querydsl.entityAccessors>
+                                </options>
+                                <packages>
+                                    <package>com.birthright.entity</package>
+                                </packages>
                                 <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
                             </configuration>
                         </execution>
                     </executions>
+                    <dependencies>
+                        <dependency>
+                            <groupId>com.querydsl</groupId>
+                            <artifactId>querydsl-apt</artifactId>
+                        </dependency>
+                    </dependencies>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -286,6 +300,7 @@
                     <configuration>
                         <source>${java.version}</source>
                         <target>${java.version}</target>
+                        <encoding>${project.build.sourceEncoding}</encoding>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -299,14 +314,6 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-        <!--need to find configs in tests in package web-inf like
-      @ContextConfiguration(locations = {"classpath:/config/application-context.xml"
-      -->
-        <!--<testResources>-->
-        <!--<testResource>-->
-        <!--<directory>src/main/java/com/birthright/infrastructure/configuration</directory>-->
-        <!--</testResource>-->
-        <!--</testResources>-->
-        <finalName>Auto Service</finalName>
+        <finalName>Spring Java Config</finalName>
     </build>
 </project>

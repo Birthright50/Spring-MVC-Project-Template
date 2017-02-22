@@ -9,7 +9,13 @@ import com.birthright.web.dto.UserDto;
  */
 public interface IUserService {
     User createUserAccount(UserDto accountDto);
+
     String checkUserIsExists(String username, String email);
+
     void createVerificationToken(User user, String token);
+
     VerificationToken getVerificationToken(String token);
+
+
+    void saveRegisteredUser(User user);
 }

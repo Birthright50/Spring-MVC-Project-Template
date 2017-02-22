@@ -21,8 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Collections;
 import java.util.regex.Pattern;
 
-import static com.birthright.validation.EmailValidator.EMAIL_PATTERN;
-
 /**
  * Created by Birthright on 02.05.2016.
  */
@@ -31,6 +29,7 @@ public class UserService implements UserDetailsService, IUserService {
     private static final String OK = "OK";
     private static final String EMAIL_EXISTS = "EMAIL_EXISTS";
     private static final String USERNAME_EXISTS = "USERNAME_EXISTS";
+    private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
     @Autowired
     private PasswordEncoder encoder;
@@ -93,7 +92,8 @@ public class UserService implements UserDetailsService, IUserService {
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        User user = Pattern.compile(EMAIL_PATTERN).matcher(login).matches() ? userRepository.findByEmail(login) : userRepository.findByUsername(login);
+        User user = Pattern.compile(EMAIL_PATTERN).matcher(login).matches() ?
+                userRepository.findByEmail(login) : userRepository.findByUsername(login);
         if (user == null) throw new UsernameNotFoundException("No user found with this email/username: " + login);
         return new UserDetailsImpl(user);
     }
@@ -103,7 +103,10 @@ public class UserService implements UserDetailsService, IUserService {
         return tokenRepository.findByToken(token);
     }
 
+    @Override
+    @Transactional
     public void saveRegisteredUser(User user) {
+        userRepository.save(user);
     }
 
 

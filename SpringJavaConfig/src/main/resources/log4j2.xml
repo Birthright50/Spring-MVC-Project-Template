@@ -20,7 +20,7 @@
     <!-- Секция логгеров -->
     <Loggers>
         <!-- Корневой логгер -->
-        <Root level="trace">
+        <Root level="trace">    
             <AppenderRef ref="file" level="DEBUG"/>
         </Root>
         <!-- Логгер нашего класса -->

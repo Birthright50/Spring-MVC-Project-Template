@@ -13,8 +13,6 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="AutoServ" target="1.8" />
-      <module name="AutoService" target="1.8" />
       <module name="SpringJavaConfig" target="1.8" />
     </bytecodeTargetLevel>
   </component>

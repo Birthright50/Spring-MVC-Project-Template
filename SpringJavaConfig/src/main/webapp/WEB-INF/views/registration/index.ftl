@@ -9,7 +9,7 @@ styles=["<link href=\"/resources/ccs/style1.css\" rel=\"stylesheet\" type=\"text
         <@form.form modelAttribute="user" id="reg" action="/registration" method="post">
 
             <div class="styled-input w3ls-text">
-                <@form.input path="userName" pattern=".{3,}" type="text" required="required"/>
+                <@form.input path="username" pattern=".{3,}" type="text" required="required"/>
                 <label>User Name</label>
                 <span></span>
             </div>
@@ -81,7 +81,6 @@ styles=["<link href=\"/resources/ccs/style1.css\" rel=\"stylesheet\" type=\"text
                     $label_span.css('border-color', 'red');
                 } else {
                     if (!($password.val() == $matchingPassword.val())) {
-                        $matchingPassword.css('border-color', 'red');
                     }
                     else {
                         $.ajax({

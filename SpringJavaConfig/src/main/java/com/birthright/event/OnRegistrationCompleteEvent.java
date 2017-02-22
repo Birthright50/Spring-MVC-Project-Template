@@ -1,7 +1,8 @@
 package com.birthright.event;
 
 import com.birthright.entity.User;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.context.ApplicationEvent;
 
 import java.util.Locale;
@@ -9,7 +10,8 @@ import java.util.Locale;
 /**
  * Created by birth on 19.02.2017.
  */
-@Data
+@Getter
+@Setter
 public class OnRegistrationCompleteEvent extends ApplicationEvent {
     private String appUrl;
     private Locale locale;

@@ -61,7 +61,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .rememberMe().useSecureCookie(true).rememberMeParameter("remember-me")
                 .rememberMeCookieName("remember-me").userDetailsService(userDetailsService)
                 .tokenValiditySeconds(rememberMeAge)
-                .and().csrf().and()
+                .and()
+                .csrf()
+                .and()
                 .exceptionHandling().accessDeniedPage("/access_denied");
         http.sessionManagement().maximumSessions(2).expiredUrl("/session_expired");
 

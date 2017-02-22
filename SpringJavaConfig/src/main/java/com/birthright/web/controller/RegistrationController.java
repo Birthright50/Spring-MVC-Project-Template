@@ -6,11 +6,11 @@ import com.birthright.entity.VerificationToken;
 import com.birthright.event.OnRegistrationCompleteEvent;
 import com.birthright.service.IUserService;
 import com.birthright.web.dto.UserDto;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +26,6 @@ import java.util.Locale;
  * Created by Birthright on 30.04.2016.
  */
 @Controller
-@Slf4j
 @RequestMapping("/registration")
 public class RegistrationController {
 
@@ -40,7 +39,8 @@ public class RegistrationController {
     private MessageSource messages;
 
     @GetMapping()
-    public String index(ModelMap modelMap) {
+    public String index(ModelMap modelMap,WebRequest request) {
+        System.out.println(request.getLocale());
         if (!modelMap.containsAttribute(modelName)) {
             modelMap.addAttribute(modelName, new UserDto());
         }
@@ -48,9 +48,9 @@ public class RegistrationController {
     }
 
     @PostMapping()
-    public RedirectView fresh_user(@Valid @ModelAttribute("user") UserDto userDto,
-                                   BindingResult result, RedirectAttributes redirectAttributes,
-                                   WebRequest request) {
+    public RedirectView new_user(@Valid @ModelAttribute("user") UserDto userDto,
+                                 BindingResult result, RedirectAttributes redirectAttributes,
+                                 WebRequest request) {
         redirectAttributes.addFlashAttribute(modelName, userDto);
         if (result.hasErrors()) {
             return new RedirectView("/registration");
@@ -66,6 +66,7 @@ public class RegistrationController {
             eventPublisher.publishEvent(new OnRegistrationCompleteEvent
                     (registered, request.getLocale(), appUrl));
         } catch (Exception exception) {
+            exception.printStackTrace();
             return new RedirectView("/error");
         }
         return new RedirectView("/registration/success");
@@ -73,28 +74,26 @@ public class RegistrationController {
 
 
     @GetMapping("confirm")
-    public RedirectView confirmRegistration(WebRequest request,
-                                            @RequestParam("token") String token,
-                                            RedirectAttributes redirectAttributes) {
+    public String confirmRegistration(WebRequest request,
+                                      @RequestParam("token") String token,
+                                      Model model) {
         Locale locale = request.getLocale();
         VerificationToken verificationToken = userService.getVerificationToken(token);
         if (verificationToken == null) {
             String message = messages.getMessage("auth.message.invalidToken", null, locale);
-            redirectAttributes.addFlashAttribute("message", message);
-            return new RedirectView("/registration/bad_token?locale=" + locale.getLanguage());
+            model.addAttribute("message", message);
+            return "/registration/bad_token?locale=" + locale.getLanguage();
         }
-
         User user = verificationToken.getUser();
         Calendar cal = Calendar.getInstance();
         if ((verificationToken.getExpiryDate().getTime() - cal.getTime().getTime()) <= 0) {
-            String messageValue = messages.getMessage("auth.message.expired", null, locale);
-            redirectAttributes.addFlashAttribute("message", messageValue);
-            return new RedirectView("/registration/bad_token?locale=" + locale.getLanguage());
+            String message = messages.getMessage("auth.message.expired", null, locale);
+            model.addAttribute("message", message);
+            return "/registration/bad_token?locale=" + locale.getLanguage();
         }
-
         user.setEnabled(true);
-       // userService.saveRegisteredUser(user);
-        return new RedirectView("/registration/bad_token?locale=" + locale.getLanguage());
+        userService.saveRegisteredUser(user);
+        return "redirect:/login?locale=" + locale.getLanguage();
     }
 
     @GetMapping("success")

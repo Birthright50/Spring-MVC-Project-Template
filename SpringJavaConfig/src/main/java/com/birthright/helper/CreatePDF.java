@@ -24,7 +24,6 @@ public class CreatePDF {
     public static Document createPDF(String file, java.util.List<String> autoBrandList) {
 
         Document document = null;
-
         try {
             document = new Document();
             PdfWriter.getInstance(document, new FileOutputStream(file));

@@ -11,10 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class LoginController {
 
-    @GetMapping("sign_in")
-    public String index()
-    {
-       return "sign/up_in";
+    @GetMapping("/login")
+    public String index() {
+        return "login/index";
     }
 
 }

@@ -1,9 +1,6 @@
 package com.birthright.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.extern.log4j.Log4j2;
 
 import javax.persistence.*;
@@ -13,9 +10,11 @@ import java.util.Collection;
  * Created by birth on 07.02.2017.
  */
 @Builder
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Log4j2
 @Table(name = "users", schema = "public", catalog = "postgres")
