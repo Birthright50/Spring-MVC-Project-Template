@@ -141,13 +141,13 @@ h1 {
 }
 
 /*-- input-effect --*/
-.styled-input input:focus ~ label, .styled-input input:valid ~ label {
+.styled-input input:focus ~ label {
     font-size: 1em;
     color: #FF9800;
-    -webkit-transition: all 0.125s ease;
-    -moz-transition: all 0.125s ease;
-    -o-transition: all 0.125s ease;
-    -ms-transition: all 0.125s ease;
+    transition: all 0.125s ease;
+}
+.styled-input input:valid ~ label{
+    color: green;
     transition: all 0.125s ease;
 }
 
@@ -161,7 +161,7 @@ h1 {
     color: #fff;
     padding: 0.8em .5em;
     position: absolute;
-    top: 0;
+    top: -1.5em;
     left: 0;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;

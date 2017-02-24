@@ -1,7 +1,9 @@
 package com.birthright.entity;
 
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -12,7 +14,9 @@ import java.util.Date;
  * Created by birth on 18.02.2017.
  */
 @Entity
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode
 @NoArgsConstructor
 @Table(name = "verification_token", schema = "public", catalog = "postgres")
 public class VerificationToken {
@@ -41,5 +45,9 @@ public class VerificationToken {
         cal.setTime(new Timestamp(cal.getTime().getTime()));
         cal.add(Calendar.MINUTE, expiryTimeInMinutes);
         return new Date(cal.getTime().getTime());
+    }
+    public void updateToken(final String token){
+        this.token = token;
+        this.expiryDate = calculateExpiryDate(EXPIRATION);
     }
 }

@@ -5,13 +5,12 @@ import com.birthright.entity.Role;
 import com.birthright.entity.User;
 import com.birthright.repository.RoleRepository;
 import com.birthright.repository.UserRepository;
-import com.birthright.service.IUserService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
 
 /**
@@ -22,14 +21,16 @@ import java.util.Collections;
 public class HomeController {
     private boolean start = false;
     @Autowired
+    private
     RoleRepository roleRepository;
     @Autowired
+    private
     UserRepository userRepository;
-    @Autowired
-    IUserService userService;
 
     @GetMapping("/")
-    public String index(HttpServletResponse s) {
+    public String index(HttpServletRequest request) {
+        final String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+        System.out.println(appUrl);
         if (!start) {
             roleRepository.save(new Role("ADMIN"));
             roleRepository.save(new Role("USER"));
@@ -40,4 +41,8 @@ public class HomeController {
         }
         return "home/index";
     }
+
+
+
+
 }

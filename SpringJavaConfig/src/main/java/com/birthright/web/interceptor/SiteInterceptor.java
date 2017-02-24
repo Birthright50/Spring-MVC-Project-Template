@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 public class SiteInterceptor extends HandlerInterceptorAdapter {
 
     @Override
-    public boolean preHandle( HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
+    public boolean preHandle( HttpServletRequest request, HttpServletResponse httpServletResponse, Object o) throws Exception {
         System.out.println("SiteInterceptor preHandle");
         return true;
     }

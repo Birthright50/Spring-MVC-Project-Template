@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title></title>
-</head>
-<body>
+<#include "../templates/body.ftl"/>
 
-</body>
-</html>
+<@body title="Login">
+
+</@body>

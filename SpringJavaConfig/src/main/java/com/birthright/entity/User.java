@@ -1,7 +1,6 @@
 package com.birthright.entity;
 
 import lombok.*;
-import lombok.extern.log4j.Log4j2;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -16,7 +15,6 @@ import java.util.Collection;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Log4j2
 @Table(name = "users", schema = "public", catalog = "postgres")
 public class User {
     @Id

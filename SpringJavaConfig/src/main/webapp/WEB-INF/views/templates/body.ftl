@@ -9,6 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/resources/images/favicon.ico" rel="icon" type="image/x-icon"/>
     <meta name="_csrf" content="${_csrf.token}"/>
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <script type="application/javascript" src="/resources/js/jquery-3.1.1.min.js"></script>
@@ -37,7 +38,7 @@
             <li <#if url?length ==1>class="active"</#if>><a href="/">Home</a></li>
             <li <#if url?contains("login")>class="active"</#if>><a href="/login" class="hvr-sweep-to-bottom">Log in</a>
             </li>
-            <li <#if url?contains("registration")>class="active"</#if>><a href="/registration"
+            <li <#if url?contains("register")>class="active"</#if>><a href="/register"
                                                                           class="hvr-sweep-to-bottom">Sign Up</a></li>
             <li <#if url?contains("about")>class="active"</#if>><a href="/about" class="hvr-sweep-to-bottom">About</a>
             </li>

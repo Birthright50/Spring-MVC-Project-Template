@@ -25,8 +25,6 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.*;
 
 /**
@@ -39,8 +37,6 @@ import java.util.*;
 @ComponentScan("com.birthright.web")
 public class MVCConfig extends WebMvcConfigurerAdapter {
 
-    @PersistenceContext
-    private EntityManager entityManager;
     @Value("${freemarker.datetime_format}")
     private String freemarker_datetime_format;
     @Value("${freemarker.number_format}")
@@ -50,22 +46,23 @@ public class MVCConfig extends WebMvcConfigurerAdapter {
     @Value("${cookie.locale_age}")
     private int localeAge;
 
-
     @Autowired
     private SiteInterceptor siteInterceptor;
-
+    private static final String RESOURCES_LOCATION = "/resources/";
+    private static final String RESOURCES_HANDLER = RESOURCES_LOCATION + "**";
 
     /**
      * <mvc:resources mapping="/resources/**" location="/resources/" />
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+        registry.addResourceHandler(RESOURCES_HANDLER).addResourceLocations(RESOURCES_LOCATION);
     }
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/404").setViewName("status/404");
+        registry.addViewController("/error").setViewName("status/error");
     }
 
     /**

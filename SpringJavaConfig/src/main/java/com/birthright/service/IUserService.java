@@ -18,4 +18,8 @@ public interface IUserService {
 
 
     void saveRegisteredUser(User user);
+
+    void deleteVerificationToken(VerificationToken verificationToken);
+
+    VerificationToken generateNewVerificationToken(String existingToken);
 }

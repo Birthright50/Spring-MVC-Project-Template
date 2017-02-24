@@ -1,16 +1,18 @@
 package com.birthright.web.listeners;
 
+import com.birthright.constants.SessionConstants;
 import com.birthright.entity.User;
 import com.birthright.event.OnRegistrationCompleteEvent;
+import com.birthright.helper.CreateEmailMessage;
 import com.birthright.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.MessageSource;
-import org.springframework.core.env.Environment;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.http.HttpSession;
 import java.util.UUID;
 
 /**
@@ -19,15 +21,18 @@ import java.util.UUID;
 @Component
 public class RegistrationListener implements ApplicationListener<OnRegistrationCompleteEvent> {
 
-
     @Autowired
-    private Environment environment;
+    private HttpSession session;
 
     @Autowired
     private IUserService service;
 
     @Autowired
     private JavaMailSender mailSender;
+
+    @Autowired
+    private CreateEmailMessage emailMessage;
+
     @Autowired
     private MessageSource messages;
 
@@ -36,24 +41,9 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
         User user = event.getUser();
         String token = UUID.randomUUID().toString();
         service.createVerificationToken(user, token);
-
-        SimpleMailMessage simpleMailMessage = constructEmailMessage(event, user, token);
+        SimpleMailMessage simpleMailMessage = emailMessage.constructVerificationTokenEmail(event, user, token, messages);
         mailSender.send(simpleMailMessage);
+        session.setAttribute(SessionConstants.EXISTING_TOKEN, token);
     }
-
-    private SimpleMailMessage constructEmailMessage(final OnRegistrationCompleteEvent event, final User user, final String token) {
-        final String recipientAddress = user.getEmail();
-        final String subject = "Registration Confirmation";
-        final String confirmationUrl = event.getAppUrl() + "/registration/confirm?token=" + token;
-        final String message = messages.getMessage("message.registration.success", null, event.getLocale());
-        final SimpleMailMessage email = new SimpleMailMessage();
-        email.setTo(recipientAddress);
-        email.setSubject(subject);
-        email.setText(message + " \r\nhttp://localhost:8080" + confirmationUrl);
-        email.setFrom(environment.getProperty("smtp.username"));
-        return email;
-    }
-
-
 
 }

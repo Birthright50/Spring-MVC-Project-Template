@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
+import java.util.UUID;
 import java.util.regex.Pattern;
 
 /**
@@ -107,6 +108,20 @@ public class UserService implements UserDetailsService, IUserService {
     @Transactional
     public void saveRegisteredUser(User user) {
         userRepository.save(user);
+    }
+
+    @Override
+    @Transactional
+    public void deleteVerificationToken(VerificationToken verificationToken) {
+        tokenRepository.delete(verificationToken);
+    }
+
+    @Override
+    @Transactional
+    public VerificationToken generateNewVerificationToken(String existingToken) {
+        VerificationToken verificationToken = getVerificationToken(existingToken);
+        verificationToken.updateToken(UUID.randomUUID().toString());
+        return tokenRepository.save(verificationToken);
     }
 
 

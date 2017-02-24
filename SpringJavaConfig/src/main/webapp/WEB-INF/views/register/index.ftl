@@ -2,11 +2,10 @@
 <@body
 title = "Registration"
 styles=["<link href=\"/resources/ccs/style1.css\" rel=\"stylesheet\" type=\"text/css\"/>"]>
-
 <div class="agilesign-form">
     <div class="agileits-top">
 
-        <@form.form modelAttribute="user" id="reg" action="/registration" method="post">
+        <@form.form modelAttribute="user" id="reg" action="/register" method="post">
 
             <div class="styled-input w3ls-text">
                 <@form.input path="username" pattern=".{3,}" type="text" required="required"/>
@@ -57,20 +56,8 @@ styles=["<link href=\"/resources/ccs/style1.css\" rel=\"stylesheet\" type=\"text
             var $label = $('label[for="' + $checkbox.attr('id') + '"]');
             var $label_span = $label.children();
             var $password = $('#password');
-            var $button = $('#submit');
             var $matchingPassword = $('#matchingPassword ');
-            var $inputs = $form.find('input:not(:checkbox)');
-            $inputs.on('keyup change', function () {
-                var length = $(this).val().length;
-                if (length != 0 || $(this).is(":focus")) {
-                    $(this).siblings('label').css('top', '-1.5em', 'color', 'orange');
-                }
-                else {
-                    if (length == 0) {
-                        $(this).siblings('label').css('top', '0');
-                    }
-                }
-            });
+//
 
             $form.on('submit', function (event) {
                 if ($form.attr("data-checked")) {
@@ -78,13 +65,13 @@ styles=["<link href=\"/resources/ccs/style1.css\" rel=\"stylesheet\" type=\"text
                 }
                 if (!$checkbox.is(":checked")) {
                     $label.css('color', 'red');
-                    $label_span.css('border-color', 'red');
+                    $label_span.css('color', 'red');
                 } else {
                     if (!($password.val() == $matchingPassword.val())) {
                     }
                     else {
                         $.ajax({
-                            url: "/registration/check_user",
+                            url: "/register/check_user",
                             method: 'post',
                             data: {
                                 username: $username.val(),
@@ -106,6 +93,5 @@ styles=["<link href=\"/resources/ccs/style1.css\" rel=\"stylesheet\" type=\"text
             });
         })();
     });
-
 </script>
 </@body>

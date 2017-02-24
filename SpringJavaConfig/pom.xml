@@ -5,7 +5,7 @@
           http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.birthright</groupId>
-    <artifactId>spring_tmp</artifactId>
+    <artifactId>spring.java.template</artifactId>
 
     <version>1.0</version>
     <packaging>war</packaging>
@@ -233,6 +233,12 @@
             <version>4.1.4</version>
         </dependency>
         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.5</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.querydsl</groupId>
             <artifactId>querydsl-apt</artifactId>
             <version>4.1.4</version>
@@ -260,39 +266,14 @@
 
     </dependencies>
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <pluginManagement>
             <plugins>
-
-                <plugin>
-                    <groupId>com.querydsl</groupId>
-                    <artifactId>querydsl-maven-plugin</artifactId>
-                    <version>4.0.7</version>
-                    <executions>
-                        <execution>
-                            <id>apt-maven-plugin-remote-module-QuerydslAnnotationProcessor</id>
-                            <goals>
-                                <goal>process</goal>
-                            </goals>
-                            <configuration>
-                                <phase>process-classes</phase>
-                                <outputDirectory>target/generated-sources/java</outputDirectory>
-                                <options>
-                                    <querydsl.entityAccessors>true</querydsl.entityAccessors>
-                                </options>
-                                <packages>
-                                    <package>com.birthright.entity</package>
-                                </packages>
-                                <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
-                            </configuration>
-                        </execution>
-                    </executions>
-                    <dependencies>
-                        <dependency>
-                            <groupId>com.querydsl</groupId>
-                            <artifactId>querydsl-apt</artifactId>
-                        </dependency>
-                    </dependencies>
-                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -303,13 +284,15 @@
                         <encoding>${project.build.sourceEncoding}</encoding>
                     </configuration>
                 </plugin>
+
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
                     <version>${maven-war-plugin.version}</version>
                     <configuration>
-                        <warSourceDirectory>src/main/webapp</warSourceDirectory>
+                        <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
                         <failOnMissingWebXml>false</failOnMissingWebXml>
+                        <useCache>true</useCache>
                     </configuration>
                 </plugin>
             </plugins>
