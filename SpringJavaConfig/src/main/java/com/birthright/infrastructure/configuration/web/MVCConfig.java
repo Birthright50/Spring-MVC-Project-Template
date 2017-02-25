@@ -5,12 +5,10 @@ import com.birthright.web.interceptor.SiteInterceptor;
 import freemarker.template.utility.XmlEscape;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.multipart.MultipartResolver;
@@ -25,7 +23,10 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 
 /**
  * Created by birth on 26.01.2017.
@@ -120,22 +121,15 @@ public class MVCConfig extends WebMvcConfigurerAdapter {
         return new LocaleChangeInterceptor();
     }
 
-    @Bean(name = "localeResolver")
-    public LocaleResolver getLocaleResolver() {
+    @Bean
+    public LocaleResolver localeResolver() {
         CookieLocaleResolver cookieLocaleResolver = new CookieLocaleResolver();
-        cookieLocaleResolver.setDefaultLocale(Locale.ENGLISH);
         cookieLocaleResolver.setCookieName("i18n");
         cookieLocaleResolver.setCookieMaxAge(localeAge);
         return cookieLocaleResolver;
     }
 
-    @Bean
-    public MessageSource messageSource() {
-        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasenames("classpath:i18n/message");
-        messageSource.setDefaultEncoding(freemarker_default_encoding);
-        return messageSource;
-    }
+
 
     //  <!-- File Upload bean config-->
     @Bean

@@ -5,23 +5,23 @@ import com.birthright.constants.SessionConstants;
 import com.birthright.entity.User;
 import com.birthright.entity.VerificationToken;
 import com.birthright.event.OnRegistrationCompleteEvent;
+import com.birthright.helper.AppHelper;
 import com.birthright.helper.CreateEmailMessage;
-import com.birthright.service.IUserService;
+import com.birthright.service.interfaces.IUserService;
+import com.birthright.service.interfaces.IVerificationTokenService;
+import com.birthright.validation.TokenNotFoundException;
 import com.birthright.web.dto.UserDto;
 import lombok.extern.log4j.Log4j2;
-import org.apache.commons.lang3.LocaleUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.MessageSource;
 import org.springframework.mail.MailException;
-import org.springframework.mail.MailSender;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -30,7 +30,6 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Calendar;
 import java.util.Locale;
-import java.util.Objects;
 
 /**
  * Created by Birthright on 30.04.2016.
@@ -47,11 +46,14 @@ public class RegistrationController {
     @Autowired
     private IUserService userService;
     @Autowired
+    private IVerificationTokenService tokenService;
+
+    @Autowired
     private MessageSource messages;
     @Autowired
     private CreateEmailMessage createEmailMessage;
     @Autowired
-    private MailSender mailSender;
+    private LocaleResolver localeResolver;
 
     @GetMapping
     public String index(ModelMap modelMap) {
@@ -75,7 +77,7 @@ public class RegistrationController {
             result.rejectValue("username", "message.reg_username_error");
             return new RedirectView("/register");
         }
-        final String appUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+        String appUrl = AppHelper.getAppUrl(request);
         try {
             eventPublisher.publishEvent(new OnRegistrationCompleteEvent
                                                 (registered, request.getLocale(), appUrl));
@@ -88,16 +90,16 @@ public class RegistrationController {
 
 
     @GetMapping(params = {"token", "u"})
-    public String confirmRegistrationByToken(WebRequest request,
+    public String confirmRegistrationByToken(HttpServletRequest request,
                                              @RequestParam String token,
                                              @RequestParam Long u,
                                              Model model,
-                                             HttpSession session,
-                                             @CookieValue(value = "i18n", required = false) String i18n) {
+                                             HttpSession session) {
 
-        Locale locale = (i18n != null) ? LocaleUtils.toLocale(i18n) : request.getLocale();
-        VerificationToken verificationToken = userService.getVerificationToken(token);
-        if (verificationToken == null) {
+        Locale locale = localeResolver.resolveLocale(request);
+        VerificationToken verificationToken = tokenService.findVerificationToken(token);
+        User user;
+        if (verificationToken == null || (user = verificationToken.getUser()).getId().equals(u)) {
             String message = messages.getMessage("auth.message.invalidToken", null, locale);
             model.addAttribute("message", message);
             return "register/bad_token";
@@ -108,15 +110,9 @@ public class RegistrationController {
             model.addAttribute("message", message);
             return "register/bad_token";
         }
-        User user = verificationToken.getUser();
-        if (!Objects.equals(user.getId(), u)) {
-            String message = messages.getMessage("auth.message.not_match", null, locale);
-            model.addAttribute("message", message);
-            return "register/bad_token";
-        }
         user.setEnabled(true);
         userService.saveRegisteredUser(user);
-        userService.deleteVerificationToken(verificationToken);
+        tokenService.deleteVerificationToken(verificationToken);
         session.removeAttribute(SessionConstants.LAST_RESEND);
         session.removeAttribute(SessionConstants.EXISTING_TOKEN);
         return "redirect:/login";
@@ -126,22 +122,24 @@ public class RegistrationController {
     public String resendRegistrationToken(final @SessionAttribute(required = false) String existingToken,
                                           HttpServletRequest request, HttpSession session,
                                           @SessionAttribute(required = false) Long lastResend,
-                                          Model model,
-                                          @CookieValue(value = "i18n", required = false) String i18n) {
+                                          Model model) {
         if (existingToken != null) {
             Calendar cal = Calendar.getInstance();
             if (lastResend != null && cal.getTime().getTime() - lastResend <= 300000) {
                 model.addAttribute("tooManyResend", true);
                 return "register/resend";
             }
-            Locale locale = (i18n != null) ? LocaleUtils.toLocale(i18n) : request.getLocale();
-            final VerificationToken newToken = userService.generateNewVerificationToken(existingToken);
-            final String appUrl = request.getScheme() + "://" + request.getServerName() +
-                    ":" + request.getServerPort() + request.getContextPath();
-            SimpleMailMessage mailMessage =
-                    createEmailMessage.constructResetVerificationTokenEmail(appUrl, locale, newToken, newToken.getUser(), messages);
+            Locale locale = localeResolver.resolveLocale(request);
+            final VerificationToken newToken;
             try {
-                mailSender.send(mailMessage);
+                newToken = tokenService.createNewVerificationToken(existingToken);
+            } catch (TokenNotFoundException e) {
+                //todo
+                return "redirect:/error";
+            }
+            String appUrl = AppHelper.getAppUrl(request);
+            try {
+                createEmailMessage.resendVerificationTokenEmail(appUrl, locale, newToken, newToken.getUser());
                 session.setAttribute(SessionConstants.EXISTING_TOKEN, newToken.getToken());
             } catch (MailException e) {
                 log.debug("Mail Exception", e);
@@ -163,13 +161,6 @@ public class RegistrationController {
             return "register/success";
         }
         return "redirect:/";
-    }
-
-    @PostMapping("check_user")
-    @ResponseBody
-    public String checkUserIfExists(@RequestParam String username,
-                                    @RequestParam String email) {
-        return userService.checkUserIsExists(username, email);
     }
 
 }

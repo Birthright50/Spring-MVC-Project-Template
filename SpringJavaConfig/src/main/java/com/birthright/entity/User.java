@@ -11,7 +11,6 @@ import java.util.Collection;
 @Builder
 @Getter
 @Setter
-@EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -40,5 +39,8 @@ public class User {
 
     @OneToOne(mappedBy = "user")
     private VerificationToken verificationToken;
+
+    @OneToOne(mappedBy = "user")
+    private PasswordResetToken passwordResetToken;
 
 }

@@ -2,11 +2,11 @@ package com.birthright.service;
 
 
 import com.birthright.entity.User;
-import com.birthright.entity.VerificationToken;
 import com.birthright.enumiration.Role;
 import com.birthright.repository.RoleRepository;
 import com.birthright.repository.UserRepository;
-import com.birthright.repository.VerificationTokenRepository;
+import com.birthright.service.interfaces.IUserService;
+import com.birthright.util.UserDetailsImpl;
 import com.birthright.validation.UserAlreadyExistException;
 import com.birthright.web.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
-import java.util.UUID;
 import java.util.regex.Pattern;
 
 /**
@@ -38,9 +37,8 @@ public class UserService implements UserDetailsService, IUserService {
     private UserRepository userRepository;
     @Autowired
     private RoleRepository roleRepository;
-    @Autowired
-    private VerificationTokenRepository tokenRepository;
 
+    @Override
     public User createUserAccount(UserDto accountDto) {
         User registered;
         try {
@@ -82,11 +80,6 @@ public class UserService implements UserDetailsService, IUserService {
         return USERNAME_EXISTS;
     }
 
-    @Transactional
-    public void createVerificationToken(User user, String token) {
-        VerificationToken myToken = new VerificationToken(token, user);
-        tokenRepository.save(myToken);
-    }
 
 
     //For Spring Security
@@ -99,29 +92,20 @@ public class UserService implements UserDetailsService, IUserService {
         return new UserDetailsImpl(user);
     }
 
+
+
+    @Override
+    @Transactional
+    public User saveRegisteredUser(User user) {
+       return userRepository.save(user);
+    }
+
+
+
+    @Override
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-    public VerificationToken getVerificationToken(String token) {
-        return tokenRepository.findByToken(token);
-    }
-
-    @Override
-    @Transactional
-    public void saveRegisteredUser(User user) {
-        userRepository.save(user);
-    }
-
-    @Override
-    @Transactional
-    public void deleteVerificationToken(VerificationToken verificationToken) {
-        tokenRepository.delete(verificationToken);
-    }
-
-    @Override
-    @Transactional
-    public VerificationToken generateNewVerificationToken(String existingToken) {
-        VerificationToken verificationToken = getVerificationToken(existingToken);
-        verificationToken.updateToken(UUID.randomUUID().toString());
-        return tokenRepository.save(verificationToken);
+    public User findUserByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
 

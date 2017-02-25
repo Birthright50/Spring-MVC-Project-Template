@@ -21,11 +21,10 @@ import java.util.Collections;
 public class HomeController {
     private boolean start = false;
     @Autowired
-    private
-    RoleRepository roleRepository;
+    private    RoleRepository roleRepository;
     @Autowired
-    private
-    UserRepository userRepository;
+    private    UserRepository userRepository;
+
 
     @GetMapping("/")
     public String index(HttpServletRequest request) {
@@ -35,14 +34,12 @@ public class HomeController {
             roleRepository.save(new Role("ADMIN"));
             roleRepository.save(new Role("USER"));
             userRepository.save(User.builder().email("birthright5050@gmail.com")
-                    .password("uuiouiou").enabled(true).tokenExpired(false).username("HuiBuchiy")
-                    .roles(Collections.singletonList(roleRepository.findByName("USER"))).build());
+                                               .password("uuiouiou").enabled(true).tokenExpired(false).username("Example")
+                                               .roles(Collections.singletonList(roleRepository.findByName("USER"))).build());
             start = true;
         }
         return "home/index";
     }
-
-
 
 
 }

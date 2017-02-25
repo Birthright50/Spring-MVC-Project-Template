@@ -6,6 +6,7 @@ import com.birthright.event.OnRegistrationCompleteEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.core.env.Environment;
+import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Component;
 
@@ -18,30 +19,51 @@ import java.util.Locale;
 public class CreateEmailMessage {
     @Autowired
     private Environment environment;
+    @Autowired
+    private MailSender mailSender;
+    @Autowired
+    private MessageSource messageSource;
 
-
-    public SimpleMailMessage constructResetVerificationTokenEmail(final String appUrl, final Locale locale, final VerificationToken newToken, final User user, MessageSource messages) {
-        final String confirmationUrl =
-                appUrl + "/register?token=" + newToken.getToken() + "&u=" + user.getId();
-        final String message = messages.getMessage("message.registration.resend", null, locale);
-        final SimpleMailMessage email = new SimpleMailMessage();
-        email.setSubject("Resend Registration Token");
-        email.setText(message + " \r\n" + confirmationUrl);
-        email.setTo(user.getEmail());
-        email.setFrom(environment.getProperty("smtp.username"));
-        return email;
+    private void sendEmail(String subject, String text,
+                           String from, String to) {
+        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+        simpleMailMessage.setSubject(subject);
+        simpleMailMessage.setText(text);
+        simpleMailMessage.setFrom(from);
+        simpleMailMessage.setTo(to);
+        mailSender.send(simpleMailMessage);
     }
 
-    public SimpleMailMessage constructVerificationTokenEmail(final OnRegistrationCompleteEvent event, final User user, final String token, MessageSource messages) {
-        final String subject = "Registration Confirmation";
-        final String message = messages.getMessage("message.registration.success", null, event.getLocale());
-        final String confirmationUrl =
+    public void resendVerificationTokenEmail(String appUrl, Locale locale, VerificationToken newToken, User user) {
+        String subject = "Resend Registration Token";
+        String from = environment.getProperty("smtp.username");
+        String to = user.getEmail();
+        String message = messageSource.getMessage("message.registration.resend", null, locale);
+        String confirmationUrl =
+                appUrl + "/register?token=" + newToken.getToken() + "&u=" + user.getId();
+        String text = message + "\r\n" + confirmationUrl;
+        sendEmail(subject, text, from, to);
+    }
+
+    public void sendVerificationTokenEmail(OnRegistrationCompleteEvent event, User user, String token) {
+        String subject = "Registration Confirmation";
+        String from = environment.getProperty("smtp.username");
+        String to = user.getEmail();
+        String message = messageSource.getMessage("message.registration.success", null, event.getLocale());
+        String confirmationUrl =
                 event.getAppUrl() + "/register?token=" + token + "&u=" + user.getId();
-        final SimpleMailMessage email = new SimpleMailMessage();
-        email.setFrom(environment.getProperty("smtp.username"));
-        email.setText(message + " \r\n" + confirmationUrl);
-        email.setTo(user.getEmail());
-        email.setSubject(subject);
-        return email;
+        String text = message + "\r\n" + confirmationUrl;
+        sendEmail(subject, text, from, to);
+    }
+
+    public void sendResetPasswordEmail(String appUrl, Locale locale, String token, User user) {
+        String subject = "Reset Password";
+        String from = environment.getProperty("smtp.username");
+        String to = user.getEmail();
+        String confirmationUrl =
+                appUrl + "/login?reset_password&token=" + token + "&u=" + user.getId();
+        String message = messageSource.getMessage("message.login.reset_password", null, locale);
+        String text = message + "\r\n" + confirmationUrl;
+        sendEmail(subject, text, from, to);
     }
 }

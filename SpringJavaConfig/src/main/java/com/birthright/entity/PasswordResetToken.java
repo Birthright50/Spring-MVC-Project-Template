@@ -1,5 +1,6 @@
 package com.birthright.entity;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,15 +11,16 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Created by birth on 18.02.2017.
+ * Created by birthright on 25.02.17.
  */
 @Entity
 @Getter
 @Setter
+@EqualsAndHashCode
 @NoArgsConstructor
-@Table(name = "verification_token", schema = "public", catalog = "postgres")
-public class VerificationToken {
-    private static final int EXPIRATION = 60 * 24 * 3;
+@Table(name = "password_reset_token", schema = "public", catalog = "postgres")
+public class PasswordResetToken {
+    private static final int EXPIRATION = 60 * 24;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,17 +28,11 @@ public class VerificationToken {
 
     private String token;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(nullable = false, name = "user_id", unique = true)
+    @OneToOne
+    @JoinColumn(name = "user_id",nullable = false, unique = true)
     private User user;
 
     private Date expiryDate;
-
-    public VerificationToken(String token, User user) {
-        this.token = token;
-        this.user = user;
-        this.expiryDate = calculateExpiryDate(EXPIRATION);
-    }
 
     private Date calculateExpiryDate(int expiryTimeInMinutes) {
         Calendar cal = Calendar.getInstance();
@@ -44,8 +40,9 @@ public class VerificationToken {
         cal.add(Calendar.MINUTE, expiryTimeInMinutes);
         return new Date(cal.getTime().getTime());
     }
-    public void updateToken(final String token){
+    public PasswordResetToken(final String token, final User user) {
         this.token = token;
+        this.user = user;
         this.expiryDate = calculateExpiryDate(EXPIRATION);
     }
 }

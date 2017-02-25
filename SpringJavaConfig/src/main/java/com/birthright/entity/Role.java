@@ -1,6 +1,5 @@
 package com.birthright.entity;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,7 +12,6 @@ import java.util.Collection;
  */
 @Getter
 @Setter
-@EqualsAndHashCode
 @Entity
 @NoArgsConstructor
 @Table(name = "roles", schema = "public", catalog = "postgres")
