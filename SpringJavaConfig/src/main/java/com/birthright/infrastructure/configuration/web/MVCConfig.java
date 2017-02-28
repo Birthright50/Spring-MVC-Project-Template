@@ -1,5 +1,6 @@
 package com.birthright.infrastructure.configuration.web;
 
+import com.birthright.constants.Routes;
 import com.birthright.infrastructure.configuration.PropertySourceConfig;
 import com.birthright.web.interceptor.SiteInterceptor;
 import freemarker.template.utility.XmlEscape;
@@ -64,6 +65,7 @@ public class MVCConfig extends WebMvcConfigurerAdapter {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/404").setViewName("status/404");
         registry.addViewController("/error").setViewName("status/error");
+        registry.addViewController("/login/new").setViewName(Routes.LOGIN_NEW_PASSWORD_VIEW);
     }
 
     /**

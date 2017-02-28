@@ -1,6 +1,7 @@
 package com.birthright.web.controller;
 
 
+import com.birthright.constants.Routes;
 import com.birthright.entity.Role;
 import com.birthright.entity.User;
 import com.birthright.repository.RoleRepository;
@@ -10,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
 
 /**
@@ -18,28 +18,26 @@ import java.util.Collections;
  */
 @Controller
 @Log4j2
-public class HomeController {
+public class RootController {
     private boolean start = false;
     @Autowired
-    private    RoleRepository roleRepository;
+    private RoleRepository roleRepository;
     @Autowired
-    private    UserRepository userRepository;
+    private UserRepository userRepository;
 
-
-    @GetMapping("/")
-    public String index(HttpServletRequest request) {
-        final String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-        System.out.println(appUrl);
+    /**
+     * Show home page
+     */
+    @GetMapping(Routes.ROOT_URI)
+    public String index() {
         if (!start) {
             roleRepository.save(new Role("ADMIN"));
             roleRepository.save(new Role("USER"));
             userRepository.save(User.builder().email("birthright5050@gmail.com")
-                                               .password("uuiouiou").enabled(true).tokenExpired(false).username("Example")
-                                               .roles(Collections.singletonList(roleRepository.findByName("USER"))).build());
+                                        .password("uuiouiou").enabled(true).tokenExpired(false).username("Example")
+                                        .roles(Collections.singletonList(roleRepository.findByName("USER"))).build());
             start = true;
         }
-        return "home/index";
+        return Routes.ROOT_VIEW;
     }
-
-
 }

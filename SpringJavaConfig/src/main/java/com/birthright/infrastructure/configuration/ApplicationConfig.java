@@ -27,6 +27,7 @@ import java.util.Properties;
 })
 @EnableScheduling
 @EnableCaching
+@EnableAspectJAutoProxy
 @ComponentScan(value = "com.birthright",
         excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX,
                 pattern = "com\\.birthright\\.((infrastructure)|(web))\\..*"))

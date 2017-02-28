@@ -15,19 +15,17 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.Http403ForbiddenEntryPoint;
 
 /**
  * Created by birth on 26.01.2017.
  */
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity(debug = true)
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsService;
-
     @Value("${cookie.remember_me_age}")
     private int rememberMeAge;
 
@@ -46,11 +44,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/**").permitAll()
                 .antMatchers("/admin/**").hasRole(Role.ADMIN.name())
                 .antMatchers("/personal_cabinet/**").hasRole(Role.USER.name())
+                .antMatchers("/login").anonymous()
+                .antMatchers("/login/save_password/**").hasRole(Role.TEMPORARY_ACCESS.name())
                 .and()
-                .formLogin().loginPage("/login").usernameParameter("email")
+                .formLogin().loginPage("/login").usernameParameter("name")
                 .passwordParameter("password").failureUrl("/login?error").loginProcessingUrl("/login_processing")
                 .defaultSuccessUrl("/", false)
                 .and()
@@ -63,9 +62,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf()
                 .and()
-                .exceptionHandling().accessDeniedPage("/access_denied");
-        http.sessionManagement().maximumSessions(2).expiredUrl("/session_expired");
-
+                .exceptionHandling().accessDeniedPage("/access_denied")
+                .and().sessionManagement().maximumSessions(2).expiredUrl("/session_expired");
     }
 
     @Bean
@@ -81,9 +79,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return authenticationProvider;
     }
 
-    @Bean
-    public Http403ForbiddenEntryPoint http403ForbiddenEntryPoint() {
-        return new Http403ForbiddenEntryPoint();
-    }
+//    @Bean
+//    public Http403ForbiddenEntryPoint http403ForbiddenEntryPoint() {
+//        return new Http403ForbiddenEntryPoint();
+//    }
 
 }

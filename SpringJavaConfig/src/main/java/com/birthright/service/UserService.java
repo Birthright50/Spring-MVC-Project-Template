@@ -108,5 +108,11 @@ public class UserService implements UserDetailsService, IUserService {
         return userRepository.findByEmail(email);
     }
 
+    @Override
+    @Transactional
+    public User changeUserPassword(User user, String password) {
+        user.setPassword(encoder.encode(password));
+        return userRepository.save(user);
+    }
 
 }

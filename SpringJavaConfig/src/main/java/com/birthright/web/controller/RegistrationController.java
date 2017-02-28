@@ -1,12 +1,14 @@
 package com.birthright.web.controller;
 
 
+import com.birthright.constants.Routes;
 import com.birthright.constants.SessionConstants;
 import com.birthright.entity.User;
 import com.birthright.entity.VerificationToken;
 import com.birthright.event.OnRegistrationCompleteEvent;
 import com.birthright.helper.AppHelper;
-import com.birthright.helper.CreateEmailMessage;
+import com.birthright.helper.CreateEmailMessageHelper;
+import com.birthright.service.interfaces.ISecureService;
 import com.birthright.service.interfaces.IUserService;
 import com.birthright.service.interfaces.IVerificationTokenService;
 import com.birthright.validation.TokenNotFoundException;
@@ -31,94 +33,112 @@ import javax.validation.Valid;
 import java.util.Calendar;
 import java.util.Locale;
 
+
 /**
  * Created by Birthright on 30.04.2016.
  */
 @Controller
-@RequestMapping("/register")
 @Log4j2
 public class RegistrationController {
-
+    private static final String MESSAGE = "message";
     private static final String modelName = "user";
-
     @Autowired
     private ApplicationEventPublisher eventPublisher;
     @Autowired
     private IUserService userService;
     @Autowired
     private IVerificationTokenService tokenService;
-
+    @Autowired
+    private ISecureService secureService;
     @Autowired
     private MessageSource messages;
     @Autowired
-    private CreateEmailMessage createEmailMessage;
+    private CreateEmailMessageHelper createEmailMessageHelper;
     @Autowired
     private LocaleResolver localeResolver;
 
-    @GetMapping
+    /**
+     * Registration process
+     */
+    @GetMapping(Routes.REGISTRATION_URI)
     public String index(ModelMap modelMap) {
         if (!modelMap.containsAttribute(modelName)) {
             modelMap.addAttribute(modelName, new UserDto());
         }
-        return "register/index";
+        return Routes.REGISTRATION_VIEW;
     }
 
-    @PostMapping
+    /**
+     * @param userDto - User Data Transfer Object, need to validate our registration form
+     */
+    @PostMapping(Routes.REGISTRATION_URI)
     public RedirectView registerUser(@Valid @ModelAttribute(modelName) UserDto userDto,
                                      BindingResult result, RedirectAttributes redirectAttributes,
                                      HttpServletRequest request) {
         redirectAttributes.addFlashAttribute(modelName, userDto);
         if (result.hasErrors()) {
-            return new RedirectView("/register");
+            return new RedirectView(Routes.REGISTRATION_URI);
         }
         User registered = userService.createUserAccount(userDto);
         if (registered == null) {
-            result.rejectValue("email", "message.reg_email_error");
-            result.rejectValue("username", "message.reg_username_error");
-            return new RedirectView("/register");
+            result.rejectValue("email", "register.message.email_error");
+            result.rejectValue("username", "register.message.username_error");
+            return new RedirectView(Routes.REGISTRATION_URI);
         }
         String appUrl = AppHelper.getAppUrl(request);
         try {
-            eventPublisher.publishEvent(new OnRegistrationCompleteEvent
-                                                (registered, request.getLocale(), appUrl));
+            eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered,
+                                                                        request.getLocale(), appUrl));
         } catch (Exception e) {
-            e.printStackTrace();
             //todo
         }
-        return new RedirectView("/register?success");
+        return new RedirectView(Routes.REGISTRATION_SUCCESS_URI);
     }
 
 
-    @GetMapping(params = {"token", "u"})
+    /**
+     * Show success page after POST registration.
+     * @return If some wise guy will go here after not registering - redirect to the root, else show page.
+     */
+    @GetMapping(value = Routes.REGISTRATION_URI, params = "success")
+    public String successRegistration(ModelMap modelMap) {
+        if (modelMap.containsAttribute(modelName)) {
+            return Routes.REGISTRATION_SUCCESS_VIEW;
+        }
+        return "redirect:" + Routes.ROOT_URI;
+    }
+
+    /**
+     * Confirm registration token from email message,
+     * @param token - VerificationToken
+     * @param u - User ID.
+     */
+    @GetMapping(value = Routes.REGISTRATION_URI, params = {"token", "u"})
     public String confirmRegistrationByToken(HttpServletRequest request,
                                              @RequestParam String token,
                                              @RequestParam Long u,
                                              Model model,
                                              HttpSession session) {
-
         Locale locale = localeResolver.resolveLocale(request);
         VerificationToken verificationToken = tokenService.findVerificationToken(token);
-        User user;
-        if (verificationToken == null || (user = verificationToken.getUser()).getId().equals(u)) {
-            String message = messages.getMessage("auth.message.invalidToken", null, locale);
-            model.addAttribute("message", message);
-            return "register/bad_token";
+        String invalidResult = secureService.checkConfirmRegistrationToken(verificationToken, u);
+        if (invalidResult != null) {
+            String message = messages.getMessage("register.message." + invalidResult, null, locale);
+            model.addAttribute(MESSAGE, message);
+            return Routes.REGISTRATION_INFO_VIEW;
         }
-        Calendar cal = Calendar.getInstance();
-        if ((verificationToken.getExpiryDate().getTime() - cal.getTime().getTime()) <= 0) {
-            String message = messages.getMessage("auth.message.expired", null, locale);
-            model.addAttribute("message", message);
-            return "register/bad_token";
-        }
-        user.setEnabled(true);
-        userService.saveRegisteredUser(user);
-        tokenService.deleteVerificationToken(verificationToken);
         session.removeAttribute(SessionConstants.LAST_RESEND);
         session.removeAttribute(SessionConstants.EXISTING_TOKEN);
-        return "redirect:/login";
+        return "redirect:" + Routes.LOGIN_URI;
     }
 
-    @GetMapping(params = "resend_token")
+    /**
+     * Resend verification email message, if user hasn't received a letter
+     * @param existingToken -  The current token after registration is stored in session, if it's not - permit request and redirect to root.
+     * @param lastResend - The date when the user has requested a resending email
+     *                   If the user requests a letter in less than 5 minutes ago - prohibit the sending and caution.
+     */
+    @GetMapping(value = Routes.REGISTRATION_URI, params = "resend_token")
     public String resendRegistrationToken(final @SessionAttribute(required = false) String existingToken,
                                           HttpServletRequest request, HttpSession session,
                                           @SessionAttribute(required = false) Long lastResend,
@@ -127,7 +147,7 @@ public class RegistrationController {
             Calendar cal = Calendar.getInstance();
             if (lastResend != null && cal.getTime().getTime() - lastResend <= 300000) {
                 model.addAttribute("tooManyResend", true);
-                return "register/resend";
+                return Routes.REGISTRATION_RESEND_TOKEN_VIEW;
             }
             Locale locale = localeResolver.resolveLocale(request);
             final VerificationToken newToken;
@@ -135,32 +155,23 @@ public class RegistrationController {
                 newToken = tokenService.createNewVerificationToken(existingToken);
             } catch (TokenNotFoundException e) {
                 //todo
-                return "redirect:/error";
+                return "redirect:" + Routes.ERROR_URI;
             }
             String appUrl = AppHelper.getAppUrl(request);
             try {
-                createEmailMessage.resendVerificationTokenEmail(appUrl, locale, newToken, newToken.getUser());
+                createEmailMessageHelper.resendVerificationTokenEmail(appUrl, locale, newToken, newToken.getUser());
                 session.setAttribute(SessionConstants.EXISTING_TOKEN, newToken.getToken());
             } catch (MailException e) {
                 log.debug("Mail Exception", e);
-                return "redirect:/error";
+                return "redirect:" + Routes.ERROR_URI;
             } catch (Exception e) {
                 log.debug(e.getLocalizedMessage(), e);
-                return "redirect:/error";
+                return "redirect:" + Routes.ERROR_URI;
             }
             session.setAttribute(SessionConstants.LAST_RESEND, Calendar.getInstance().getTime().getTime());
-            return "register/resend";
+            return Routes.REGISTRATION_RESEND_TOKEN_VIEW;
         }
-        return "redirect:/";
-    }
-
-
-    @GetMapping(params = "success")
-    public String successRegistration(ModelMap modelMap) {
-        if (modelMap.containsAttribute(modelName)) {
-            return "register/success";
-        }
-        return "redirect:/";
+        return "redirect:" + Routes.ROOT_URI;
     }
 
 }

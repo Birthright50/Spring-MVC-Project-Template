@@ -16,7 +16,7 @@ import java.util.Locale;
  * Created by birthright on 24.02.17.
  */
 @Component
-public class CreateEmailMessage {
+public class CreateEmailMessageHelper {
     @Autowired
     private Environment environment;
     @Autowired
@@ -38,7 +38,7 @@ public class CreateEmailMessage {
         String subject = "Resend Registration Token";
         String from = environment.getProperty("smtp.username");
         String to = user.getEmail();
-        String message = messageSource.getMessage("message.registration.resend", null, locale);
+        String message = messageSource.getMessage("register.message.resend", null, locale);
         String confirmationUrl =
                 appUrl + "/register?token=" + newToken.getToken() + "&u=" + user.getId();
         String text = message + "\r\n" + confirmationUrl;
@@ -49,7 +49,7 @@ public class CreateEmailMessage {
         String subject = "Registration Confirmation";
         String from = environment.getProperty("smtp.username");
         String to = user.getEmail();
-        String message = messageSource.getMessage("message.registration.success", null, event.getLocale());
+        String message = messageSource.getMessage("register.message.success", null, event.getLocale());
         String confirmationUrl =
                 event.getAppUrl() + "/register?token=" + token + "&u=" + user.getId();
         String text = message + "\r\n" + confirmationUrl;
@@ -62,7 +62,7 @@ public class CreateEmailMessage {
         String to = user.getEmail();
         String confirmationUrl =
                 appUrl + "/login?reset_password&token=" + token + "&u=" + user.getId();
-        String message = messageSource.getMessage("message.login.reset_password", null, locale);
+        String message = messageSource.getMessage("auth.message.reset_password", null, locale);
         String text = message + "\r\n" + confirmationUrl;
         sendEmail(subject, text, from, to);
     }

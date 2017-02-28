@@ -3,7 +3,7 @@ package com.birthright.web.listeners;
 import com.birthright.constants.SessionConstants;
 import com.birthright.entity.User;
 import com.birthright.event.OnRegistrationCompleteEvent;
-import com.birthright.helper.CreateEmailMessage;
+import com.birthright.helper.CreateEmailMessageHelper;
 import com.birthright.service.interfaces.IVerificationTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -25,7 +25,7 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
     private IVerificationTokenService tokenService;
 
     @Autowired
-    private CreateEmailMessage emailMessage;
+    private CreateEmailMessageHelper emailMessage;
 
     @Override
     public void onApplicationEvent(OnRegistrationCompleteEvent event) {
