@@ -4,11 +4,8 @@ import com.birthright.validation.PasswordMatches;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 /**
  * Created by birth on 11.02.2017.
@@ -19,23 +16,16 @@ import javax.validation.constraints.Size;
 @PasswordMatches
 public class UserDto {
 
-    @NotNull
-    @NotEmpty(message = "Username is empty or Username exists")
+    @Pattern(regexp = "^[a-zA-Z0-9_-]{3,15}$", message = "The length from 3 to 15, with no special characters")
     private String username;
 
     @Pattern(regexp = "^[_A-Za-z0-9-+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
-    @NotNull
-    @NotEmpty(message = "Email is empty or Email exists")
     private String email;
 
-    @NotNull
-    @NotEmpty(message = "Password must be from 6 to 20 character")
-    @Size(min = 6, max = 24)
+    @Pattern(regexp = "(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$", message = "UpperCase, LowerCase, Number/SpecialChar and min 8 Chars")
     private String password;
 
-    @NotNull
-    @NotEmpty(message = "Password must be from 6 to 20 character")
-    @Size(min = 6, max = 24)
+    @Pattern(regexp = "(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$", message = "UpperCase, LowerCase, Number/SpecialChar and min 8 Chars")
     private String matchingPassword;
 
 }

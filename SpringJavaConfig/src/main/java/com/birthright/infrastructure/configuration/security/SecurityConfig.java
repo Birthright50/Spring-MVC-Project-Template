@@ -1,5 +1,6 @@
 package com.birthright.infrastructure.configuration.security;
 
+import com.birthright.constants.Routes;
 import com.birthright.enumiration.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,13 +16,14 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.AccessDeniedHandler;
 
 /**
  * Created by birth on 26.01.2017.
  */
 
 @Configuration
-@EnableWebSecurity(debug = true)
+@EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
@@ -38,7 +40,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/resources/**");
-
     }
 
     @Override
@@ -46,11 +47,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/admin/**").hasRole(Role.ADMIN.name())
                 .antMatchers("/personal_cabinet/**").hasRole(Role.USER.name())
-                .antMatchers("/login").anonymous()
-                .antMatchers("/login/save_password/**").hasRole(Role.TEMPORARY_ACCESS.name())
+                .antMatchers(Routes.LOGIN_URI + "/new_password/**").hasRole(Role.TEMPORARY_ACCESS.name())
+                .antMatchers(Routes.LOGIN_URI + "/**").anonymous()
+
+                .antMatchers(Routes.REGISTRATION_URI + "/**").anonymous()
                 .and()
-                .formLogin().loginPage("/login").usernameParameter("name")
-                .passwordParameter("password").failureUrl("/login?error").loginProcessingUrl("/login_processing")
+                .formLogin().loginPage(Routes.LOGIN_URI).usernameParameter("name")
+                .passwordParameter("password").failureUrl(Routes.LOGIN_URI + "?error").loginProcessingUrl("/login_processing")
                 .defaultSuccessUrl("/", false)
                 .and()
                 .logout().logoutUrl("/logout").logoutSuccessUrl("/")
@@ -62,7 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf()
                 .and()
-                .exceptionHandling().accessDeniedPage("/access_denied")
+                .exceptionHandling().accessDeniedHandler(accessDeniedHandler())
                 .and().sessionManagement().maximumSessions(2).expiredUrl("/session_expired");
     }
 
@@ -79,9 +82,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return authenticationProvider;
     }
 
-//    @Bean
-//    public Http403ForbiddenEntryPoint http403ForbiddenEntryPoint() {
-//        return new Http403ForbiddenEntryPoint();
-//    }
+    @Bean
+    public AccessDeniedHandler accessDeniedHandler() {
+        return new AccessDeniedServletRequestHandler();
+    }
 
 }

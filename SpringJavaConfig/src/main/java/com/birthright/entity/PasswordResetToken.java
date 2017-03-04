@@ -15,7 +15,7 @@ import java.util.Date;
  */
 @Entity
 @Getter
-@Setter
+@Setter()
 @EqualsAndHashCode
 @NoArgsConstructor
 @Table(name = "password_reset_token", schema = "public", catalog = "postgres")
@@ -43,6 +43,9 @@ public class PasswordResetToken {
     public PasswordResetToken(final String token, final User user) {
         this.token = token;
         this.user = user;
+        this.expiryDate = calculateExpiryDate(EXPIRATION);
+    }
+    public void setExpiryDate(){
         this.expiryDate = calculateExpiryDate(EXPIRATION);
     }
 }

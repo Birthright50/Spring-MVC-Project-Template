@@ -2,6 +2,7 @@ package com.birthright.web.controller;
 
 
 import com.birthright.constants.Routes;
+import com.birthright.constants.SecurityConstants;
 import com.birthright.constants.SessionConstants;
 import com.birthright.entity.PasswordResetToken;
 import com.birthright.entity.User;
@@ -67,33 +68,36 @@ public class LoginController {
     /**
      * Show reset password page
      */
-    @GetMapping(params = "reset_password")
+    @GetMapping(value = Routes.LOGIN_URI, params = "reset_password")
     public String resetPassword() {
         return Routes.LOGIN_RESET_PASSWORD_VIEW;
     }
 
     /**
-     *
-     * @param userEmail -  a user's email, which need to reset password
-     * @param lastResend - 
+     * @param userEmail  -  a user's email, which need to reset password
+     * @param lastResend - The date when the user has requested a resending email If the user requests a letter in less
+     *                   than 5 minutes ago - prohibit the sending and caution.
      * @return without Exception always redirect to Login Info Page, with Exception - to Error Page
      */
-    @PostMapping(params = "reset_password")
+
+    @PostMapping(value = Routes.LOGIN_URI, params = "reset_password")
     public RedirectView resetPassword(HttpServletRequest request,
                                       @RequestParam("email") final String userEmail,
                                       RedirectAttributes redirectAttributes,
                                       HttpSession session,
                                       @SessionAttribute(required = false, name = SessionConstants.LAST_RESEND) Long lastResend) {
+
         if (lastResend != null && Calendar.getInstance().getTime().getTime() - lastResend <= 600000) {
-            redirectAttributes.addFlashAttribute("tooManyResend", true);
-            return new RedirectView(Routes.LOGIN_INFO_URI);
+            String message = messageSource.getMessage("auth.message.too_many_resend", null, request.getLocale());
+            redirectAttributes.addFlashAttribute(MESSAGE, message);
+            return new RedirectView(Routes.LOGIN_URI + "?reset_password");
         }
         Locale locale = localeResolver.resolveLocale(request);
         User user = userService.findUserByEmail(userEmail);
         if (user == null) {
             String message = messageSource.getMessage("auth.message.not_found", null, request.getLocale());
             redirectAttributes.addFlashAttribute(MESSAGE, message);
-            return new RedirectView(Routes.LOGIN_INFO_URI);
+            return new RedirectView(Routes.LOGIN_URI + "?reset_password");
         }
         String token = UUID.randomUUID().toString();
         tokenService.createPasswordResetToken(token, user);
@@ -101,36 +105,36 @@ public class LoginController {
         try {
             createEmailMessageHelper.sendResetPasswordEmail(appUrl, request.getLocale(), token, user);
         } catch (Exception e) {
-            //todo
+            redirectAttributes.addAttribute(MESSAGE, e.getMessage());
             return new RedirectView(Routes.ERROR_URI);
         }
-        String message = messageSource.getMessage("message.login.reset_password", null, locale);
+        String message = messageSource.getMessage("login.message.reset_password", null, locale);
         redirectAttributes.addFlashAttribute(MESSAGE, message);
         session.setAttribute(SessionConstants.LAST_RESEND, Calendar.getInstance().getTime().getTime());
         return new RedirectView(Routes.LOGIN_INFO_URI);
     }
 
-
-    @GetMapping(params = {"token", "u", "reset_password"})
-    public String showResetPassword(@RequestParam String token, @RequestParam Long u,
-                                    HttpServletRequest request, Model model) {
+    @GetMapping(value = Routes.LOGIN_URI, params = {"token", "u", "reset_password"})
+    public RedirectView showResetPassword(@RequestParam String token, @RequestParam Long u,
+                                    HttpServletRequest request,
+                                    RedirectAttributes redirectAttributes) {
         Locale locale = localeResolver.resolveLocale(request);
         PasswordResetToken resetToken = tokenService.findPasswordResetToken(token);
         String invalidResult = secureService.checkConfirmResetPasswordToken(resetToken, u);
         if (invalidResult != null) {
             String message = messageSource.getMessage("auth.message." + invalidResult, null, locale);
-            model.addAttribute(MESSAGE, message);
-            return "redirect:" + Routes.LOGIN_INFO_URI;
+            redirectAttributes.addFlashAttribute(MESSAGE, message);
+            return  new RedirectView(Routes.LOGIN_INFO_URI);
         }
         User user = resetToken.getUser();
         UserDetails userDetails = new UserDetailsImpl(user);
-        Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, Collections.singletonList(new SimpleGrantedAuthority(Role.TEMPORARY_ACCESS.toString())));
+        Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, Collections.singletonList(new SimpleGrantedAuthority(SecurityConstants.DEFAULT_ROLE_PREFIX + Role.TEMPORARY_ACCESS.toString())));
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        return Routes.LOGIN_NEW_PASSWORD_VIEW;
+        return  new RedirectView(Routes.LOGIN_NEW_PASSWORD_URI);
     }
 
     @GetMapping(Routes.LOGIN_NEW_PASSWORD_URI)
-    public String showSaveNewPasswordAgain() {
+    public String showNewPasswordPage() {
         return Routes.LOGIN_NEW_PASSWORD_VIEW;
     }
 
@@ -148,12 +152,13 @@ public class LoginController {
         UserDetailsImpl userDetails = ((UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         User user = userDetails.getUser();
         userService.changeUserPassword(user, password);
+        tokenService.deletePasswordResetToken(user);
         userDetails.setUser(user);
         Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String message = messageSource.getMessage("auth.message.success_reset", null,
                                                   localeResolver.resolveLocale(request));
-        redirectAttributes.addAttribute(MESSAGE, message);
+        redirectAttributes.addFlashAttribute(MESSAGE, message);
         return new RedirectView(Routes.LOGIN_INFO_URI);
     }
 
@@ -165,4 +170,5 @@ public class LoginController {
         }
         return "redirect:" + Routes.ROOT_URI;
     }
+
 }

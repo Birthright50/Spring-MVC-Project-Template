@@ -2,7 +2,7 @@ package com.birthright.infrastructure;
 
 import com.birthright.infrastructure.configuration.ApplicationConfig;
 import com.birthright.infrastructure.configuration.web.MVCConfig;
-import com.birthright.web.listeners.SessionListener;
+import com.birthright.listeners.SessionListener;
 import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;

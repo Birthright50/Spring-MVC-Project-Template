@@ -2,7 +2,6 @@
 <#assign form=JspTaglibs["http://www.springframework.org/tags/form"]/>
 <#assign spring=JspTaglibs["http://www.springframework.org/tags"]/>
 <#assign url = "${springMacroRequestContext.getRequestUri()}">
-
 <#macro body title="Главная" styles=[] scripts=[]>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +34,7 @@
 <div class="main">
     <div class="nav_w3l">
         <ul>
-            <li <#if url?length ==1>class="active"</#if>><a href="/">Home</a></li>
+            <li <#if url?length ==1>class="active"</#if>><a class="hvr-sweep-to-bottom" href="/">Home</a></li>
             <li <#if url?contains("login")>class="active"</#if>><a href="/login" class="hvr-sweep-to-bottom">Log in</a>
             </li>
             <li <#if url?contains("register")>class="active"</#if>><a href="/register"
@@ -47,7 +46,7 @@
     <#nested>
 </div>
 <footer class="copyright">
-    <p>© 2016 Cool 404 Page Widget. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+    <p>© 2016. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
 </footer>
 </body>
 </html>

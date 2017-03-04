@@ -49,8 +49,6 @@ public class UserService implements UserDetailsService, IUserService {
         return registered;
     }
 
-
-    @Transactional
     private User registerNewUserAccount(UserDto userDto) throws UserAlreadyExistException {
         String result = checkUserIsExists(userDto.getUsername(), userDto.getEmail());
         switch (result) {
@@ -61,11 +59,11 @@ public class UserService implements UserDetailsService, IUserService {
         }
         User user = User.builder()
                 .email(userDto.getEmail())
-                .password(encoder.encode(userDto.getPassword()))
+                .password(userDto.getPassword())
                 .username(userDto.getUsername())
                 .roles(Collections.singletonList(roleRepository.findByName(Role.USER.name())))
                 .build();
-        return userRepository.save(user);
+        return saveNewUser(user);
     }
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
@@ -81,7 +79,6 @@ public class UserService implements UserDetailsService, IUserService {
     }
 
 
-
     //For Spring Security
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     @Override
@@ -93,13 +90,11 @@ public class UserService implements UserDetailsService, IUserService {
     }
 
 
-
     @Override
     @Transactional
     public User saveRegisteredUser(User user) {
-       return userRepository.save(user);
+        return userRepository.save(user);
     }
-
 
 
     @Override
@@ -112,6 +107,13 @@ public class UserService implements UserDetailsService, IUserService {
     @Transactional
     public User changeUserPassword(User user, String password) {
         user.setPassword(encoder.encode(password));
+        return userRepository.save(user);
+    }
+
+    @Override
+    @Transactional
+    public User saveNewUser(User user) {
+        user.setPassword(encoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 

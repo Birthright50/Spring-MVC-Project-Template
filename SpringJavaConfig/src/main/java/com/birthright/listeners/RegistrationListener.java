@@ -1,4 +1,4 @@
-package com.birthright.web.listeners;
+package com.birthright.listeners;
 
 import com.birthright.constants.SessionConstants;
 import com.birthright.entity.User;
@@ -35,5 +35,4 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
         emailMessage.sendVerificationTokenEmail(event, user, token);
         session.setAttribute(SessionConstants.EXISTING_TOKEN, token);
     }
-
 }

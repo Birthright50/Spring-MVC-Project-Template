@@ -1,11 +1,7 @@
 <#include "../templates/body.ftl"/>
-<@body title="404 Not Found">
-<h1>404</h1>
-<#if SPRING_SECURITY_403_EXCEPTION??>
-
-</#if>
-<h2>ooops, something goes wrong</h2>
-<h2>Page not found</h2>
+<@body title="Access Denied">
+<h1>403</h1>
+<h2>ooops, you doesn't have the proper access rights</h2>
 <div class="more_w3ls">
     <a href="/">Return to home page</a>
 </div>

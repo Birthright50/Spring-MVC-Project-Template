@@ -14,10 +14,9 @@ public class RestUserController {
     @Autowired
     private IUserService userService;
 
-    @PostMapping("/registration/check_user")
+    @PostMapping("/register/check_user")
     public String checkUserIfExists(@RequestParam String username,
                                     @RequestParam String email) {
         return userService.checkUserIsExists(username, email);
     }
-
 }

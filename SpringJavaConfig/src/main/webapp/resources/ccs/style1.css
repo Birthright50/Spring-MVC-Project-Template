@@ -5,128 +5,8 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
 /*--reset--*/
-
-
-ol, ul {
-    list-style: none;
-    margin: 0px;
-    padding: 0px;
-}
-
-blockquote, q {
-    quotes: none;
-}
-
-blockquote:before, blockquote:after, q:before, q:after {
-    content: '';
-    content: none;
-}
-
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-
-/*--start editing from here--*/
-a {
-    text-decoration: none;
-}
-
-.txt-rt {
-    text-align: right;
-}
-
-/* text align right */
-.txt-lt {
-    text-align: left;
-}
-
-/* text align left */
-.txt-center {
-    text-align: center;
-}
-
-/* text align center */
-.float-rt {
-    float: right;
-}
-
-/* float right */
-.float-lt {
-    float: left;
-}
-
-/* float left */
-.clear {
-    clear: both;
-}
-
-/* clear float */
-.pos-relative {
-    position: relative;
-}
-
-/* Position Relative */
-.pos-absolute {
-    position: absolute;
-}
-
-/* Position Absolute */
-.vertical-base {
-    vertical-align: baseline;
-}
-
-/* vertical align baseline */
-.vertical-top {
-    vertical-align: top;
-}
-
-/* vertical align top */
-nav.vertical ul li {
-    display: block;
-}
-
-/* vertical menu */
-nav.horizontal ul li {
-    display: inline-block;
-}
-
-/* horizontal menu */
-img {
-    max-width: 100%;
-}
-
-/*--end reset--*/
-body {
-    font-family: 'Open Sans', sans-serif;
-    background-color: #fff;
-    background: url(../images/banner.jpg) no-repeat center 0px;
-    background-attachment: fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-}
-
-h1 {
-    font-size: 3em;
-    text-align: center;
-    color: #fff;
-    font-weight: 100;
-}
-
-/*-- main --*/
-.w3layouts-main {
-    padding: 2em 0 0;
-}
-
-.agilesign-form {
-    width: 35%;
-    margin: 2em auto;
-    background: rgba(2, 29, 20, 0.6);
-}
-
-.agileits-top {
-    padding: 1em 3em 0;
+.error {
+    color: red;
 }
 
 .agilesign-form input[type="text"], .agilesign-form input[type="password"] {
@@ -137,7 +17,6 @@ h1 {
     width: 96%;
     border-bottom: 1px solid #fff;
     background: none;
-    -webkit-appearance: none;
 }
 
 /*-- input-effect --*/
@@ -146,8 +25,41 @@ h1 {
     color: #FF9800;
     transition: all 0.125s ease;
 }
-.styled-input input:valid ~ label{
+
+.styled-input input:valid ~ label {
     color: green;
+    transition: all 0.125s ease;
+}
+
+.agileits-top .error {
+    display: none;
+    color: red;
+}
+.agileits-top .error > p{
+    color: red;
+}
+.agileits-top .error > hr {
+    background: red;
+    border: none;
+    height: 2px;
+    transition: all 1s linear;
+    width: 0;
+}
+
+.agileits-top .show-error {
+    display: block;
+}
+
+.agileits-top .show-error > hr {
+    transition: all 1s linear;
+}
+
+.agileits-top .trans-width > hr {
+    width: 100%;
+}
+
+.styled-input input:valid ~ span {
+    background: green;
     transition: all 0.125s ease;
 }
 
@@ -181,10 +93,6 @@ h1 {
     position: absolute;
     bottom: 0;
     left: 0;
-    -webkit-transition: all 0.125s ease;
-    -moz-transition: all 0.125s ease;
-    -o-transition: all 0.125s ease;
-    -ms-transition: all 0.125s ease;
     transition: all 0.125s ease;
 }
 
@@ -194,10 +102,6 @@ h1 {
 
 .styled-input input:focus ~ span {
     width: 100%;
-    -webkit-transition: all 0.075s ease;
-    -moz-transition: all 0.075s ease;
-    -o-transition: all 0.075s ease;
-    -ms-transition: all 0.075s ease;
     transition: all 0.075s ease;
     font-family: 'Open Sans', sans-serif;
 }
@@ -221,16 +125,16 @@ h1 {
     font-size: 1em;
     color: #fff;
     cursor: pointer;
-    display: block;
+    margin: 0.5em 0;
 }
 
 .wthree-text input[type="checkbox"] + label span:first-child {
     width: 14px;
     height: 14px;
-    border: 2px solid #fff;
+    border: 2px solid #C8C8C8;
     position: absolute;
     left: 0;
-    top: 2px;
+    top: 3px;
 }
 
 .wthree-text input[type="checkbox"]:checked + label span:first-child:before {
@@ -245,41 +149,17 @@ h1 {
 }
 
 /*-- //checkbox --*/
+.wthree-text p{
+    color: darkorange;
+}
 .wthree-text {
+    text-align: left;
     margin-top: 2.5em;
 }
 
 .agileits-bottom {
     position: relative;
     margin: 3em -3em 0;
-}
-
-.agileits-bottom:before {
-    content: '';
-    position: absolute;
-    top: -17px;
-    left: -17px;
-    width: 0;
-    height: 0;
-    border-top: 17px solid transparent;
-    border-right: 17px solid #fff;
-    transition: .5s all ease;
-}
-
-.agileits-bottom:after {
-    content: '';
-    position: absolute;
-    top: -17px;
-    right: -17px;
-    width: 0;
-    height: 0;
-    border-left: 17px solid #fff;
-    border-top: 17px solid transparent;
-    -webkit-transition: .5s all;
-    -moz-transition: .5s all;
-    -o-transition: .5s all;
-    -ms-transition: .5s all;
-    transition: .5s all;
 }
 
 .agileits-bottom input[type="submit"] {
@@ -312,6 +192,30 @@ h1 {
 .agileits-bottom:hover:after {
     border-left-color: #FF9800;
 }
+.agileits-top input[type="submit"] {
+    font-size: 1em;
+
+    background: #fff;
+    color: #FF9800;
+    border: 3px solid #FF9800;
+    outline: none;
+    cursor: pointer;
+    padding: .6em 1em;
+    -webkit-appearance: none;
+    width: 100%;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.agileits-top input[type="submit"]:hover {
+    color: #fff;
+    background: #FF9800;
+    border-color: #FF9800;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+}
 
 .w3agile-btm {
     padding: 2em 0;
@@ -319,6 +223,7 @@ h1 {
 }
 
 .w3agile-btm p a {
+    cursor: pointer;
     font-size: 1em;
     color: #fff;
     -webkit-transition: .5s all;
@@ -335,29 +240,6 @@ h1 {
 
 /*-- //main --*/
 /*-- copyright --*/
-.copyright {
-    margin: 1em 0;
-    text-align: center;
-}
-
-.copyright p {
-    font-size: 1em;
-    color: #fff;
-    line-height: 1.8em;
-}
-
-.copyright p a {
-    color: #fff;
-    -webkit-transition: 0.5s all;
-    -moz-transition: 0.5s all;
-    -o-transition: 0.5s all;
-    -ms-transition: 0.5s all;
-    transition: 0.5s all;
-}
-
-.copyright p a:hover {
-    color: #FF9800;
-}
 
 /*-- //copyright --*/
 /*-- responsive-design --*/

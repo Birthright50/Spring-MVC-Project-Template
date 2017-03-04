@@ -1,14 +1,13 @@
 <#include "../templates/body.ftl"/>
 
-<@body title="Main Page"
-styles=["<link href=\"/resources/ccs/style1.css\" rel=\"stylesheet\" type=\"text/css\"/>"]>
+<@body title="Home Page">
 <h2>Hello,
     <@security.authorize access="isAnonymous()">
 Anonymous
     </@security.authorize>
 
     <@security.authorize access="isAuthenticated()">
-    Tupica
+    <@security.authentication property="principal.username"/>
     </@security.authorize>
 </h2>
 </@body>

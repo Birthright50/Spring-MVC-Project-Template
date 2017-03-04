@@ -1,7 +1,7 @@
 <#include "../templates/body.ftl"/>
-<@body title="404 Not Found">
+<@body title="Error">
 <h1>Error</h1>
-<h2>ooops, something goes wrong</h2>
+<h2>ooops</h2>
 <div class="more_w3ls">
     <a href="/">Try Once Again</a>
 </div>

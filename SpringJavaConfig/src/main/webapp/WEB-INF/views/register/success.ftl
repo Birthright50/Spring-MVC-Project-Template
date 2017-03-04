@@ -3,7 +3,7 @@
 <br><br>
 
 <h2>Success registration</h2>
-<h3>We have sent you a confirmation email to ${user.getEmail()}</h3>
+<p>We have sent you a confirmation email to ${user.getEmail()}</p>
 <br>
-<h4>Didn't get the email? <a href="/register?resend_token">Resend verification email</a> </h4>
+<p>Didn't get the email? <a href="/register?resend_token">Resend verification email</a> </p>
 </@body>

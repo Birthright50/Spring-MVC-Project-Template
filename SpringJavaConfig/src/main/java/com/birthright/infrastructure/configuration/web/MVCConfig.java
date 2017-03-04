@@ -63,9 +63,10 @@ public class MVCConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/404").setViewName("status/404");
-        registry.addViewController("/error").setViewName("status/error");
-        registry.addViewController("/login/new").setViewName(Routes.LOGIN_NEW_PASSWORD_VIEW);
+        registry.addViewController(Routes.NOT_FOUND_URI).setViewName(Routes.NOT_FOUND_VIEW);
+        registry.addViewController(Routes.ACCESS_DENIED_URI).setViewName(Routes.ACCESS_DENIED_VIEW);
+        registry.addViewController(Routes.ERROR_URI).setViewName(Routes.ERROR_VIEW);
+        registry.addViewController(Routes.ABOUT_URI).setViewName(Routes.ABOUT_VIEW);
     }
 
     /**

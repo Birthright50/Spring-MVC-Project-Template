@@ -49,6 +49,7 @@ public class CreateEmailMessageHelper {
         String subject = "Registration Confirmation";
         String from = environment.getProperty("smtp.username");
         String to = user.getEmail();
+        System.out.println(event.getLocale());
         String message = messageSource.getMessage("register.message.success", null, event.getLocale());
         String confirmationUrl =
                 event.getAppUrl() + "/register?token=" + token + "&u=" + user.getId();

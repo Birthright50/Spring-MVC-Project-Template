@@ -1,5 +1,6 @@
 package com.birthright.web.handler;
 
+import com.birthright.constants.Routes;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -28,6 +29,6 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public RedirectView missingParameter() {
-        return new RedirectView(":/");
+        return new RedirectView(Routes.ROOT_URI);
     }
 }

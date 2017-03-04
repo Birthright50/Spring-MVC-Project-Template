@@ -24,7 +24,7 @@ public class SecureService implements ISecureService {
     @Override
     public String checkConfirmRegistrationToken(VerificationToken verificationToken, Long id) {
         User user;
-        if (verificationToken == null || (user = verificationToken.getUser()).getId().equals(id)) {
+        if (verificationToken == null || !(user = verificationToken.getUser()).getId().equals(id)) {
             return "invalidToken";
         }
         Calendar cal = Calendar.getInstance();
@@ -39,8 +39,7 @@ public class SecureService implements ISecureService {
 
     @Override
     public String checkConfirmResetPasswordToken(PasswordResetToken resetToken, Long id) {
-        User user;
-        if (resetToken == null || !(user = resetToken.getUser()).getId().equals(id)) {
+        if (resetToken == null || !resetToken.getUser().getId().equals(id)) {
             return "invalidToken";
         }
         Calendar calendar = Calendar.getInstance();

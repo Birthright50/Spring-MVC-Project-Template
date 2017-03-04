@@ -1,6 +1,7 @@
 package com.birthright.util;
 
 
+import com.birthright.constants.SecurityConstants;
 import com.birthright.entity.Role;
 import com.birthright.entity.User;
 import lombok.AllArgsConstructor;
@@ -31,10 +32,10 @@ public class UserDetailsImpl implements UserDetails {
         return getAuthorities(user.getRoles());
     }
 
-    private static Collection<GrantedAuthority> getAuthorities (Collection<Role> roles) {
+    private static Collection<GrantedAuthority> getAuthorities(Collection<Role> roles) {
         Set<GrantedAuthority> authorities = new HashSet<>();
         for (Role role : roles) {
-            authorities.add(new SimpleGrantedAuthority(role.getName()));
+            authorities.add(new SimpleGrantedAuthority(SecurityConstants.DEFAULT_ROLE_PREFIX + role.getName()));
         }
         return authorities;
     }
@@ -52,7 +53,7 @@ public class UserDetailsImpl implements UserDetails {
      */
     @Override
     public String getUsername() {
-        return user.getEmail();
+        return user.getUsername();
     }
 
     /**
@@ -86,8 +87,6 @@ public class UserDetailsImpl implements UserDetails {
     public boolean isEnabled() {
         return user.isEnabled();
     }
-
-
 
 
 }

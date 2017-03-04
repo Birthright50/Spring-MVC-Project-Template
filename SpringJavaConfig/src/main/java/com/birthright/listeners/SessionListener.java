@@ -1,4 +1,4 @@
-package com.birthright.web.listeners;
+package com.birthright.listeners;
 
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;

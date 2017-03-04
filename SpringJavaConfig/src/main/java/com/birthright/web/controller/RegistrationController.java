@@ -88,9 +88,10 @@ public class RegistrationController {
         String appUrl = AppHelper.getAppUrl(request);
         try {
             eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered,
-                                                                        request.getLocale(), appUrl));
+                                                                        localeResolver.resolveLocale(request), appUrl));
         } catch (Exception e) {
-            //todo
+            redirectAttributes.addAttribute(MESSAGE, e.getMessage());
+            return new RedirectView(Routes.ERROR_URI);
         }
         return new RedirectView(Routes.REGISTRATION_SUCCESS_URI);
     }
@@ -98,6 +99,7 @@ public class RegistrationController {
 
     /**
      * Show success page after POST registration.
+     *
      * @return If some wise guy will go here after not registering - redirect to the root, else show page.
      */
     @GetMapping(value = Routes.REGISTRATION_URI, params = "success")
@@ -110,15 +112,17 @@ public class RegistrationController {
 
     /**
      * Confirm registration token from email message,
+     *
      * @param token - VerificationToken
-     * @param u - User ID.
+     * @param u     - User ID.
      */
     @GetMapping(value = Routes.REGISTRATION_URI, params = {"token", "u"})
     public String confirmRegistrationByToken(HttpServletRequest request,
                                              @RequestParam String token,
                                              @RequestParam Long u,
                                              Model model,
-                                             HttpSession session) {
+                                             HttpSession session,
+                                             RedirectAttributes redirectAttributes) {
         Locale locale = localeResolver.resolveLocale(request);
         VerificationToken verificationToken = tokenService.findVerificationToken(token);
         String invalidResult = secureService.checkConfirmRegistrationToken(verificationToken, u);
@@ -129,17 +133,21 @@ public class RegistrationController {
         }
         session.removeAttribute(SessionConstants.LAST_RESEND);
         session.removeAttribute(SessionConstants.EXISTING_TOKEN);
+        String message = messages.getMessage("register.message.success_confirmation", null, locale);
+        redirectAttributes.addFlashAttribute(MESSAGE, message);
         return "redirect:" + Routes.LOGIN_URI;
     }
 
     /**
      * Resend verification email message, if user hasn't received a letter
-     * @param existingToken -  The current token after registration is stored in session, if it's not - permit request and redirect to root.
-     * @param lastResend - The date when the user has requested a resending email
-     *                   If the user requests a letter in less than 5 minutes ago - prohibit the sending and caution.
+     *
+     * @param existingToken -  The current token after registration is stored in session, if it's not - permit request
+     *                      and redirect to root.
+     * @param lastResend    - The date when the user has requested a resending email If the user requests a letter in
+     *                      less than 5 minutes ago - prohibit the sending and caution.
      */
     @GetMapping(value = Routes.REGISTRATION_URI, params = "resend_token")
-    public String resendRegistrationToken(final @SessionAttribute(required = false) String existingToken,
+    public String resendRegistrationToken(final @SessionAttribute(value = SessionConstants.EXISTING_TOKEN, required = false) String existingToken,
                                           HttpServletRequest request, HttpSession session,
                                           @SessionAttribute(required = false) Long lastResend,
                                           Model model) {
@@ -157,6 +165,7 @@ public class RegistrationController {
                 //todo
                 return "redirect:" + Routes.ERROR_URI;
             }
+
             String appUrl = AppHelper.getAppUrl(request);
             try {
                 createEmailMessageHelper.resendVerificationTokenEmail(appUrl, locale, newToken, newToken.getUser());

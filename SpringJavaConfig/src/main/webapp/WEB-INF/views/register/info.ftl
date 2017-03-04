@@ -1,6 +1,6 @@
 <#include "../templates/body.ftl">
-<@body title="Invalid token">
+<@body title="Register info">
 
 <br><br>
-<h2>${message}</h2>
+<p>${message}</p>
 </@body>
