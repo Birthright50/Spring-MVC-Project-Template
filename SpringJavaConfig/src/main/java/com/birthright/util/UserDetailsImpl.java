@@ -31,7 +31,6 @@ public class UserDetailsImpl implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getAuthorities(user.getRoles());
     }
-
     private static Collection<GrantedAuthority> getAuthorities(Collection<Role> roles) {
         Set<GrantedAuthority> authorities = new HashSet<>();
         for (Role role : roles) {

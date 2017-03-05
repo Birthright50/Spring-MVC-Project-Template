@@ -15,7 +15,7 @@ import java.util.Date;
  */
 @Entity
 @Getter
-@Setter()
+@Setter
 @EqualsAndHashCode
 @NoArgsConstructor
 @Table(name = "password_reset_token", schema = "public", catalog = "postgres")

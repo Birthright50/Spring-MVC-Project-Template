@@ -85,7 +85,9 @@ public class UserService implements UserDetailsService, IUserService {
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
         User user = Pattern.compile(EMAIL_PATTERN).matcher(login).matches() ?
                 userRepository.findByEmail(login) : userRepository.findByUsername(login);
-        if (user == null) throw new UsernameNotFoundException("No user found with this email/username: " + login);
+        if (user == null) {
+            throw new UsernameNotFoundException("No user found with this email/username: " + login);
+        }
         return new UserDetailsImpl(user);
     }
 

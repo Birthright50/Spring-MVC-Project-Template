@@ -145,8 +145,22 @@ h2 > a:hover, h3>a:hover, h4>a:hover{
     padding: 10px 20px;
     text-decoration: none;
 }
-
 .nav_w3l ul li.active a {
+    background: #fff;
+    color: #212121;
+}
+.nav_w3l ul li button {
+    font-family: 'Viga', sans-serif;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 1em;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+.nav_w3l ul li.active button {
     background: #fff;
     color: #212121;
 }

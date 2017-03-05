@@ -243,10 +243,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 /*-- //copyright --*/
 /*-- responsive-design --*/
-@media (max-width: 1440px) {
-    .agileits-bottom input[type="submit"] {
-        width: 106.8%;
+@media (min-width: 1366px) {
+    .agilesign-form {
+        width: 37%;
+        margin: 3em auto;
     }
+
 }
 
 @media (max-width: 1366px) {

@@ -28,7 +28,6 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
     public void onStartup(ServletContext servletContext) throws ServletException {
         super.onStartup(servletContext);
         servletContext.setInitParameter("spring.profiles.active", "prod");
-        servletContext.setInitParameter("org.jboss.logging.provider", "log4j2");
         servletContext.addListener(new SessionListener());
 
 //        //create the root Spring application context

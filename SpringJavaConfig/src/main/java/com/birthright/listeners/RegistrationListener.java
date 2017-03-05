@@ -18,6 +18,7 @@ import java.util.UUID;
 @Component
 public class RegistrationListener implements ApplicationListener<OnRegistrationCompleteEvent> {
 
+
     @Autowired
     private HttpSession session;
 

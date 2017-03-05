@@ -17,17 +17,28 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.authentication.RememberMeServices;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenBasedRememberMeServices;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+
 
 /**
  * Created by birth on 26.01.2017.
  */
-
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
     private UserDetailsService userDetailsService;
+
+    @Autowired
+    private PersistentTokenRepository persistentTokenRepository;
+
+    @Value("${cookie.remember_me_key}")
+    private String rememberMeKey;
+
     @Value("${cookie.remember_me_age}")
     private int rememberMeAge;
 
@@ -45,23 +56,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/admin/**").hasRole(Role.ADMIN.name())
-                .antMatchers("/personal_cabinet/**").hasRole(Role.USER.name())
-                .antMatchers(Routes.LOGIN_URI + "/new_password/**").hasRole(Role.TEMPORARY_ACCESS.name())
+                .antMatchers(Routes.LOGIN_NEW_PASSWORD_URI + "/**").hasRole(Role.TEMPORARY_ACCESS.name())
                 .antMatchers(Routes.LOGIN_URI + "/**").anonymous()
-
                 .antMatchers(Routes.REGISTRATION_URI + "/**").anonymous()
                 .and()
                 .formLogin().loginPage(Routes.LOGIN_URI).usernameParameter("name")
-                .passwordParameter("password").failureUrl(Routes.LOGIN_URI + "?error").loginProcessingUrl("/login_processing")
-                .defaultSuccessUrl("/", false)
+                .passwordParameter("password").failureUrl(Routes.LOGIN_URI + "?error").loginProcessingUrl(Routes.LOGIN_PROCESSING_URI)
+                .defaultSuccessUrl(Routes.ROOT_URI, false)
                 .and()
-                .logout().logoutUrl("/logout").logoutSuccessUrl("/")
+                .logout().logoutUrl(Routes.LOGOUT_URI).logoutSuccessUrl("/")
                 .invalidateHttpSession(true).deleteCookies("JSESSIONID")
                 .and()
-                .rememberMe().useSecureCookie(true).rememberMeParameter("remember-me")
-                .rememberMeCookieName("remember-me").userDetailsService(userDetailsService)
-                .tokenValiditySeconds(rememberMeAge)
+                .rememberMe()
+//Olg Hash-based remember-me cookie
+//                userDetailsService(userDetailsService).key("uniqueAndSecret")
+//                .rememberMeCookieName("remember-me").rememberMeParameter("remember-me")
+//                .tokenValiditySeconds(rememberMeAge)
+                .rememberMeServices(rememberMeServices()).key(rememberMeKey)
                 .and()
                 .csrf()
                 .and()
@@ -87,4 +98,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new AccessDeniedServletRequestHandler();
     }
 
+
+    @Bean
+    public RememberMeServices rememberMeServices() {
+        PersistentTokenBasedRememberMeServices rememberMeServices = new PersistentTokenBasedRememberMeServices(
+                rememberMeKey, userDetailsService, persistentTokenRepository);
+        rememberMeServices.setTokenValiditySeconds(rememberMeAge);
+        rememberMeServices.setTokenLength(32);
+        rememberMeServices.setSeriesLength(24);
+        rememberMeServices.setCookieName("remember-me");
+        rememberMeServices.setParameter("remember-me");
+        return rememberMeServices;
+    }
 }

@@ -29,7 +29,6 @@ public class User {
     @Column(name = "enabled", nullable = false)
     private boolean enabled;
 
-    private boolean tokenExpired;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles",

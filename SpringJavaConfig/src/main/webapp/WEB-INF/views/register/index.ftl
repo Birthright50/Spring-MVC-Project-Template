@@ -18,7 +18,7 @@ styles=["<link href=\"/resources/ccs/style1.css\" rel=\"stylesheet\" type=\"text
             </div>
             <div class="styled-input w3ls-text">
                 <@form.input path="email" type="text" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$"/>
-                <label>Email ID</label>
+                <label>Email</label>
                 <span></span>
             </div>
             <div id="email_error" class="error">

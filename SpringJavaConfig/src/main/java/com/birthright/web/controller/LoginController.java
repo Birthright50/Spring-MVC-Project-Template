@@ -86,7 +86,6 @@ public class LoginController {
                                       RedirectAttributes redirectAttributes,
                                       HttpSession session,
                                       @SessionAttribute(required = false, name = SessionConstants.LAST_RESEND) Long lastResend) {
-
         if (lastResend != null && Calendar.getInstance().getTime().getTime() - lastResend <= 600000) {
             String message = messageSource.getMessage("auth.message.too_many_resend", null, request.getLocale());
             redirectAttributes.addFlashAttribute(MESSAGE, message);
@@ -129,6 +128,7 @@ public class LoginController {
         User user = resetToken.getUser();
         UserDetails userDetails = new UserDetailsImpl(user);
         Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, Collections.singletonList(new SimpleGrantedAuthority(SecurityConstants.DEFAULT_ROLE_PREFIX + Role.TEMPORARY_ACCESS.toString())));
+
         SecurityContextHolder.getContext().setAuthentication(authentication);
         return  new RedirectView(Routes.LOGIN_NEW_PASSWORD_URI);
     }

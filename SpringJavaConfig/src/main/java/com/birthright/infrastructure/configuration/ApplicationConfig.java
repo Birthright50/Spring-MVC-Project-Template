@@ -12,6 +12,7 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import org.springframework.core.env.Environment;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 import javax.net.ssl.SSLSocketFactory;
@@ -27,6 +28,7 @@ import java.util.Properties;
 })
 @EnableScheduling
 @EnableCaching
+@EnableAsync
 @EnableAspectJAutoProxy
 @ComponentScan(value = "com.birthright",
         excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX,

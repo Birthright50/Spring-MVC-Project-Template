@@ -35,12 +35,22 @@
     <div class="nav_w3l">
         <ul>
             <li <#if url?length ==1>class="active"</#if>><a class="hvr-sweep-to-bottom" href="/">Home</a></li>
-            <li <#if url?contains("login")>class="active"</#if>><a href="/login" class="hvr-sweep-to-bottom">Log in</a>
-            </li>
-            <li <#if url?contains("register")>class="active"</#if>><a href="/register"
+            <@security.authorize access="isAnonymous()">
+                <li <#if url?contains("login")>class="active"</#if>><a href="/login" class="hvr-sweep-to-bottom">Log
+                    in</a>
+                </li>
+                <li <#if url?contains("register")>class="active"</#if>><a href="/register"
                                                                           class="hvr-sweep-to-bottom">Sign Up</a></li>
+            </@security.authorize>
             <li <#if url?contains("about")>class="active"</#if>><a href="/about" class="hvr-sweep-to-bottom">About</a>
             </li>
+            <@security.authorize access="isAuthenticated()">
+                <li>
+                    <@form.form action="/logout" method="post">
+                        <button type="submit" class="hvr-sweep-to-bottom">Logout</button>
+                    </@form.form>
+                </li>
+            </@security.authorize>
         </ul>
     </div>
     <#nested>
