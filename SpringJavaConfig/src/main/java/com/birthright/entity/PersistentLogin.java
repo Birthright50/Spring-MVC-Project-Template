@@ -27,6 +27,7 @@ public class PersistentLogin {
     private String token;
 
     @Column(name = "last_used", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date lastUsed;
 
 }

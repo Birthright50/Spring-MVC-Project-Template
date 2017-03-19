@@ -31,8 +31,9 @@ public class UserDetailsImpl implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getAuthorities(user.getRoles());
     }
+
     private static Collection<GrantedAuthority> getAuthorities(Collection<Role> roles) {
-        Set<GrantedAuthority> authorities = new HashSet<>();
+        Set<GrantedAuthority> authorities = new HashSet<>(5);
         for (Role role : roles) {
             authorities.add(new SimpleGrantedAuthority(SecurityConstants.DEFAULT_ROLE_PREFIX + role.getName()));
         }

@@ -7,8 +7,8 @@ import com.birthright.constants.SessionConstants;
 import com.birthright.entity.PasswordResetToken;
 import com.birthright.entity.User;
 import com.birthright.enumiration.Role;
-import com.birthright.helper.AppHelper;
-import com.birthright.helper.CreateEmailMessageHelper;
+import com.birthright.util.UrlApplicationHelper;
+import com.birthright.util.CreateEmailMessageHelper;
 import com.birthright.service.interfaces.IPasswordResetTokenService;
 import com.birthright.service.interfaces.ISecureService;
 import com.birthright.service.interfaces.IUserService;
@@ -100,7 +100,7 @@ public class LoginController {
         }
         String token = UUID.randomUUID().toString();
         tokenService.createPasswordResetToken(token, user);
-        String appUrl = AppHelper.getAppUrl(request);
+        String appUrl = UrlApplicationHelper.getAppUrl(request);
         try {
             createEmailMessageHelper.sendResetPasswordEmail(appUrl, request.getLocale(), token, user);
         } catch (Exception e) {

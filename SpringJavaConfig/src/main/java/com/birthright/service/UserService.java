@@ -31,6 +31,7 @@ public class UserService implements UserDetailsService, IUserService {
     private static final String USERNAME_EXISTS = "USERNAME_EXISTS";
     private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
+
     @Autowired
     private PasswordEncoder encoder;
     @Autowired
@@ -63,7 +64,7 @@ public class UserService implements UserDetailsService, IUserService {
                 .username(userDto.getUsername())
                 .roles(Collections.singletonList(roleRepository.findByName(Role.USER.name())))
                 .build();
-        return saveNewUser(user);
+        return saveWithPasswordChanging(user);
     }
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
@@ -82,7 +83,7 @@ public class UserService implements UserDetailsService, IUserService {
     //For Spring Security
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     @Override
-    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException{
         User user = Pattern.compile(EMAIL_PATTERN).matcher(login).matches() ?
                 userRepository.findByEmail(login) : userRepository.findByUsername(login);
         if (user == null) {
@@ -94,7 +95,7 @@ public class UserService implements UserDetailsService, IUserService {
 
     @Override
     @Transactional
-    public User saveRegisteredUser(User user) {
+    public User save(User user) {
         return userRepository.save(user);
     }
 
@@ -114,7 +115,7 @@ public class UserService implements UserDetailsService, IUserService {
 
     @Override
     @Transactional
-    public User saveNewUser(User user) {
+    public User saveWithPasswordChanging(User user) {
         user.setPassword(encoder.encode(user.getPassword()));
         return userRepository.save(user);
     }

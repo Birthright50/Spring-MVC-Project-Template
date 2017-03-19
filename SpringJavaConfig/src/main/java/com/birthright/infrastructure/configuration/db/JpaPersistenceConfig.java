@@ -1,11 +1,16 @@
 package com.birthright.infrastructure.configuration.db;
 
+import com.birthright.util.UsernameAuditorAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
+import org.springframework.data.auditing.CurrentDateTimeProvider;
+import org.springframework.data.auditing.DateTimeProvider;
+import org.springframework.data.domain.AuditorAware;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -25,12 +30,20 @@ import java.util.Properties;
 @Import(DataSourceConfig.class)
 @EnableTransactionManagement//<!-- activate @Transactional JPA annotation --> <tx:annotation-driven/>
 @EnableJpaRepositories(basePackages = {"com.birthright.repository"}) // Enable and scan Spring Data repositories.
+@EnableJpaAuditing(dateTimeProviderRef = "dateTimeProvider", auditorAwareRef = "auditorProvider")
+
 public class JpaPersistenceConfig {
 
     @Autowired
     private DataSource dataSource;
     @Autowired
     private Environment environment;
+
+
+    private static final String PROPERTY_NAME_HIBERNATE_DIALECT = "hibernate.dialect";
+    private static final String PROPERTY_NAME_HIBERNATE_FORMAT_SQL = "hibernate.format_sql";
+    private static final String PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO = "hibernate.hbm2ddl.auto";
+    private static final String PROPERTY_NAME_HIBERNATE_SHOW_SQL = "hibernate.show_sql";
 
     /**
      * <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" >
@@ -50,12 +63,22 @@ public class JpaPersistenceConfig {
         return new HibernateJpaVendorAdapter();
     }
 
+    @Bean
+    public DateTimeProvider dateTimeProvider() {
+        return CurrentDateTimeProvider.INSTANCE;
+    }
+
+    @Bean
+    public AuditorAware<String> auditorProvider() {
+        return new UsernameAuditorAware();
+    }
 
     private Properties additionalProperties() {
         Properties properties = new Properties();
-        properties.setProperty("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
-        properties.setProperty("hibernate.dialect", environment.getProperty("hibernate.dialect"));
-        properties.setProperty("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
+        properties.setProperty(PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO, environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO));
+        properties.setProperty(PROPERTY_NAME_HIBERNATE_DIALECT, environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_DIALECT));
+        properties.setProperty(PROPERTY_NAME_HIBERNATE_SHOW_SQL, environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_SHOW_SQL));
+        properties.setProperty(PROPERTY_NAME_HIBERNATE_FORMAT_SQL, environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_FORMAT_SQL));
         return properties;
     }
 

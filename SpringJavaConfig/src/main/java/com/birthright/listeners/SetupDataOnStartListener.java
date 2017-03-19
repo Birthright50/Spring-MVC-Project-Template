@@ -31,7 +31,7 @@ public class SetupDataOnStartListener implements ApplicationListener<ContextRefr
         roleRepository.save(new Role(com.birthright.enumiration.Role.USER.name()));
         User user = User.builder().email("birthright5050@gmail.com").username("Birthright")
                 .enabled(true).roles(Collections.singletonList(admin)).password("Qwerty123").build();
-        userService.saveNewUser(user);
+        userService.saveWithPasswordChanging(user);
         isAlreadySetup = true;
     }
 }

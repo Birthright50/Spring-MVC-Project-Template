@@ -15,6 +15,11 @@ public class DataSourceConfig {
     @Autowired
     private Environment environment;
 
+    private static final String PROPERTY_NAME_DB_DRIVER_CLASS = "db.driver";
+    private static final String PROPERTY_NAME_DB_PASSWORD = "db.password";
+    private static final String PROPERTY_NAME_DB_URL = "db.url";
+    private static final String PROPERTY_NAME_DB_USER = "db.username";
+
     /**
      * <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
      */
@@ -22,10 +27,10 @@ public class DataSourceConfig {
     @Bean(destroyMethod = "close")
     public HikariDataSource dataSource() {
         HikariDataSource dataSource = new HikariDataSource();
-        dataSource.setDriverClassName(environment.getProperty("db.driver"));
-        dataSource.setJdbcUrl(environment.getProperty("db.url"));
-        dataSource.setUsername(environment.getProperty("db.username"));
-        dataSource.setPassword(environment.getProperty("db.password"));
+        dataSource.setDriverClassName(environment.getRequiredProperty(PROPERTY_NAME_DB_DRIVER_CLASS));
+        dataSource.setJdbcUrl(environment.getRequiredProperty(PROPERTY_NAME_DB_URL));
+        dataSource.setUsername(environment.getRequiredProperty(PROPERTY_NAME_DB_USER));
+        dataSource.setPassword(environment.getRequiredProperty(PROPERTY_NAME_DB_PASSWORD));
         return dataSource;
     }
 }

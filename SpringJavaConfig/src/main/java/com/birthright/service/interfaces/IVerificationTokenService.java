@@ -2,13 +2,12 @@ package com.birthright.service.interfaces;
 
 import com.birthright.entity.User;
 import com.birthright.entity.VerificationToken;
-import com.birthright.validation.TokenNotFoundException;
 
 /**
  * Created by birthright on 25.02.17.
  */
 public interface IVerificationTokenService {
-    VerificationToken createNewVerificationToken(String existingToken) throws TokenNotFoundException;
+    VerificationToken createNewVerificationToken(String existingToken);
 
     void deleteVerificationToken(VerificationToken verificationToken);
 

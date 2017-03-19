@@ -29,9 +29,10 @@ public class PasswordResetToken {
     private String token;
 
     @OneToOne
-    @JoinColumn(name = "user_id",nullable = false, unique = true)
+    @JoinColumn(name = "user_id", nullable = false, unique = true)
     private User user;
 
+    @Temporal(TemporalType.TIMESTAMP)
     private Date expiryDate;
 
     private Date calculateExpiryDate(int expiryTimeInMinutes) {
@@ -40,12 +41,14 @@ public class PasswordResetToken {
         cal.add(Calendar.MINUTE, expiryTimeInMinutes);
         return new Date(cal.getTime().getTime());
     }
+
     public PasswordResetToken(final String token, final User user) {
         this.token = token;
         this.user = user;
         this.expiryDate = calculateExpiryDate(EXPIRATION);
     }
-    public void setExpiryDate(){
+
+    public void setExpiryDate() {
         this.expiryDate = calculateExpiryDate(EXPIRATION);
     }
 }

@@ -32,7 +32,7 @@ public class SecureService implements ISecureService {
             return "expired";
         }
         user.setEnabled(true);
-        userService.saveRegisteredUser(user);
+        userService.save(user);
         tokenService.deleteVerificationToken(verificationToken);
         return null;
     }
@@ -48,6 +48,5 @@ public class SecureService implements ISecureService {
         }
         return null;
     }
-
 
 }

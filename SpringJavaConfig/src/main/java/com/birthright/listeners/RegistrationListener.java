@@ -3,7 +3,7 @@ package com.birthright.listeners;
 import com.birthright.constants.SessionConstants;
 import com.birthright.entity.User;
 import com.birthright.event.OnRegistrationCompleteEvent;
-import com.birthright.helper.CreateEmailMessageHelper;
+import com.birthright.util.CreateEmailMessageHelper;
 import com.birthright.service.interfaces.IVerificationTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;

@@ -3,6 +3,11 @@ package com.birthright.constants;
 /**
  * Created by birthright on 04.03.17.
  */
-public interface SecurityConstants {
-    String DEFAULT_ROLE_PREFIX = "ROLE_";
+public class SecurityConstants {
+   public static final String DEFAULT_ROLE_PREFIX = "ROLE_";
+
+
+   private SecurityConstants() throws Throwable {
+       throw new Throwable();
+   }
 }

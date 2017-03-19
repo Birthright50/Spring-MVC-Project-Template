@@ -35,7 +35,7 @@ public class VerificationEmailService implements IVerificationTokenService {
 
     @Override
     @Transactional
-    public VerificationToken createNewVerificationToken(String existingToken) throws TokenNotFoundException {
+    public VerificationToken createNewVerificationToken(String existingToken) {
         VerificationToken verificationToken = findVerificationToken(existingToken);
         if (verificationToken == null) {
             throw new TokenNotFoundException();

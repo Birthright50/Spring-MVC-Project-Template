@@ -8,5 +8,6 @@ import com.birthright.entity.VerificationToken;
  */
 public interface ISecureService {
     String checkConfirmRegistrationToken(VerificationToken verificationToken, Long id);
+
     String checkConfirmResetPasswordToken(PasswordResetToken resetToken, Long id);
 }

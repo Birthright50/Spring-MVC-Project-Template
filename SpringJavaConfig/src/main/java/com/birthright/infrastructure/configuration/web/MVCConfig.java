@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.multipart.MultipartResolver;
@@ -37,6 +38,7 @@ import java.util.Properties;
 @Import(PropertySourceConfig.class)
 //<context:component-scan base-package=''>
 @ComponentScan("com.birthright.web")
+@EnableSpringDataWebSupport
 public class MVCConfig extends WebMvcConfigurerAdapter {
 
     @Value("${freemarker.datetime_format}")
@@ -132,13 +134,14 @@ public class MVCConfig extends WebMvcConfigurerAdapter {
         return cookieLocaleResolver;
     }
 
-
-
     //  <!-- File Upload bean config-->
     @Bean
     public MultipartResolver multipartResolver() {
         return new StandardServletMultipartResolver();
     }
 
-
+    @Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
+    }
 }

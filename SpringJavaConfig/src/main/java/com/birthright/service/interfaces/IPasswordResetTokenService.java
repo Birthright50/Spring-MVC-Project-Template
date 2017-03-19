@@ -12,5 +12,6 @@ public interface IPasswordResetTokenService {
     PasswordResetToken createPasswordResetToken(String token, User user);
 
     void deletePasswordResetToken(String token);
+
     void deletePasswordResetToken(User user);
 }

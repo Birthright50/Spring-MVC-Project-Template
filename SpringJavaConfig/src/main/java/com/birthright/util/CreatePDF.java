@@ -1,11 +1,10 @@
-package com.birthright.helper;
+package com.birthright.util;
 
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import org.springframework.stereotype.Component;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -15,7 +14,6 @@ import java.util.Date;
 /**
  * Created by birthright on 07.05.16.
  */
-@Component
 public class CreatePDF {
 
     private static final Font TIME_ROMAN = new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD);

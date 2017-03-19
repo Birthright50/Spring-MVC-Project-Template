@@ -29,12 +29,11 @@ import java.util.Properties;
 @EnableScheduling
 @EnableCaching
 @EnableAsync
-@EnableAspectJAutoProxy
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 @ComponentScan(value = "com.birthright",
         excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX,
                 pattern = "com\\.birthright\\.((infrastructure)|(web))\\..*"))
 public class ApplicationConfig {
-
     @Autowired
     private Environment environment;
 
@@ -45,6 +44,7 @@ public class ApplicationConfig {
 
     @Bean
     public JavaMailSender javaMailSenderImpl() {
+
         JavaMailSenderImpl mailSenderImpl = new JavaMailSenderImpl();
         mailSenderImpl.setHost(environment.getProperty("smtp.host"));
         mailSenderImpl.setPort(environment.getProperty("smtp.port", Integer.class));

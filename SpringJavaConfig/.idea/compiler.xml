@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AjcSettings">
+    <option name="ajcPath" value="$USER_HOME$/aspectj1.8/lib/aspectjtools.jar" />
+  </component>
   <component name="CompilerConfiguration">
+    <addNotNullAssertions enabled="false" />
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
@@ -12,7 +16,7 @@
         <module name="SpringJavaConfig" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8">
       <module name="SpringJavaConfig" target="1.8" />
     </bytecodeTargetLevel>
   </component>

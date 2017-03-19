@@ -56,4 +56,5 @@ public class JpaTokenRepositoryImpl implements PersistentTokenRepository {
             e.printStackTrace();
         }
     }
+
 }

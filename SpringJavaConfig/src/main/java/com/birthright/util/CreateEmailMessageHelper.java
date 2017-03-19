@@ -1,4 +1,4 @@
-package com.birthright.helper;
+package com.birthright.util;
 
 import com.birthright.entity.User;
 import com.birthright.entity.VerificationToken;

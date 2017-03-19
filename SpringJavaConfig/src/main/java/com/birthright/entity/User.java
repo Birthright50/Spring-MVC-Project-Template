@@ -3,6 +3,7 @@ package com.birthright.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 
 /**
@@ -15,19 +16,28 @@ import java.util.Collection;
 @NoArgsConstructor
 @Entity
 @Table(name = "users", schema = "public", catalog = "postgres")
-public class User {
+public class User extends BaseAuditingEntity implements Serializable {
+
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     @Column(name = "email", nullable = false, unique = true)
     private String email;
+
     @Column(name = "username", nullable = false, unique = true)
     private String username;
+
     @Column(name = "password", nullable = false)
     private String password;
+
     @Column(name = "enabled", nullable = false)
     private boolean enabled;
+
+    @Version
+    @Column(name = "version", nullable = false)
+    private int version;
 
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -41,4 +51,5 @@ public class User {
 
     @OneToOne(mappedBy = "user", orphanRemoval = true)
     private PasswordResetToken passwordResetToken;
+
 }

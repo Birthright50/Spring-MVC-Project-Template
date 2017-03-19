@@ -30,6 +30,7 @@ public class VerificationToken {
     @JoinColumn(nullable = false, name = "user_id", unique = true)
     private User user;
 
+    @Temporal(TemporalType.TIMESTAMP)
     private Date expiryDate;
 
     public VerificationToken(String token, User user) {
