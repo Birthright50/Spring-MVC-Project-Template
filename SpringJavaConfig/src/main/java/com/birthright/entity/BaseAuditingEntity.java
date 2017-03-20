@@ -42,6 +42,4 @@ abstract class BaseAuditingEntity {
     @LastModifiedBy
     private String modifiedBy;
 
-
-
 }

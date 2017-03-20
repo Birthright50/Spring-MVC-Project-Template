@@ -6,11 +6,11 @@ import com.birthright.constants.SessionConstants;
 import com.birthright.entity.User;
 import com.birthright.entity.VerificationToken;
 import com.birthright.event.OnRegistrationCompleteEvent;
-import com.birthright.util.UrlApplicationHelper;
-import com.birthright.util.CreateEmailMessageHelper;
 import com.birthright.service.interfaces.ISecureService;
 import com.birthright.service.interfaces.IUserService;
 import com.birthright.service.interfaces.IVerificationTokenService;
+import com.birthright.util.CreateEmailMessageHelper;
+import com.birthright.util.UrlApplicationHelper;
 import com.birthright.validation.TokenNotFoundException;
 import com.birthright.web.dto.UserDto;
 import lombok.extern.log4j.Log4j2;
@@ -23,7 +23,6 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.annotation.ApplicationScope;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
@@ -57,7 +56,6 @@ public class RegistrationController {
     private CreateEmailMessageHelper createEmailMessageHelper;
     @Autowired
     private LocaleResolver localeResolver;
-@ApplicationScope
     /**
      * Registration process
      */

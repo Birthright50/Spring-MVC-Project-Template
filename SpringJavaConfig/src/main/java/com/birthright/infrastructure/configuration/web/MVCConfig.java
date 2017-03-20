@@ -1,20 +1,20 @@
 package com.birthright.infrastructure.configuration.web;
 
 import com.birthright.constants.Routes;
-import com.birthright.infrastructure.configuration.PropertySourceConfig;
-import com.birthright.web.interceptor.SiteInterceptor;
 import freemarker.template.utility.XmlEscape;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
+import org.springframework.web.servlet.AsyncHandlerInterceptor;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
@@ -35,10 +35,9 @@ import java.util.Properties;
  */
 @Configuration
 @EnableWebMvc  //<mvc:annotation-driven>
-@Import(PropertySourceConfig.class)
-//<context:component-scan base-package=''>
-@ComponentScan("com.birthright.web")
+@ComponentScan("com.birthright.web") //<context:component-scan base-package=''>
 @EnableSpringDataWebSupport
+@EnableAspectJAutoProxy
 public class MVCConfig extends WebMvcConfigurerAdapter {
 
     @Value("${freemarker.datetime_format}")
@@ -51,7 +50,10 @@ public class MVCConfig extends WebMvcConfigurerAdapter {
     private int localeAge;
 
     @Autowired
-    private SiteInterceptor siteInterceptor;
+    @Qualifier("site_interceptor")
+    private AsyncHandlerInterceptor siteInterceptor;
+
+
     private static final String RESOURCES_LOCATION = "/resources/";
     private static final String RESOURCES_HANDLER = RESOURCES_LOCATION + "**";
 
@@ -101,7 +103,6 @@ public class MVCConfig extends WebMvcConfigurerAdapter {
         return configurer;
     }
 
-    //обычно сам конфигурирует
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.add(jacksonHttpMessageConverter());

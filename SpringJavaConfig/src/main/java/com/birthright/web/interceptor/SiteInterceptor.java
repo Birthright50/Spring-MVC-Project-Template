@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  * Created by birth on 27.01.2017.
  */
 //only for java config annotation
-@Component
+@Component("site_interceptor")
 public class SiteInterceptor extends HandlerInterceptorAdapter {
 
     @Override
