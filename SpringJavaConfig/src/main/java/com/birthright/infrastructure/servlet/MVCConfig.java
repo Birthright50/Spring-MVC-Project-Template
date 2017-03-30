@@ -1,17 +1,19 @@
-package com.birthright.infrastructure.configuration.web;
+package com.birthright.infrastructure.servlet;
 
 import com.birthright.constants.Routes;
+import com.birthright.infrastructure.PropertySourceConfig;
 import freemarker.template.utility.XmlEscape;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.*;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
+import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.validation.Validator;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.AsyncHandlerInterceptor;
@@ -33,12 +35,14 @@ import java.util.Properties;
 /**
  * Created by birth on 26.01.2017.
  */
+@Import({PropertySourceConfig.class})
 @Configuration
 @EnableWebMvc  //<mvc:annotation-driven>
 @ComponentScan("com.birthright.web") //<context:component-scan base-package=''>
 @EnableSpringDataWebSupport
 @EnableAspectJAutoProxy
 public class MVCConfig extends WebMvcConfigurerAdapter {
+
 
     @Value("${freemarker.datetime_format}")
     private String freemarker_datetime_format;
@@ -48,10 +52,18 @@ public class MVCConfig extends WebMvcConfigurerAdapter {
     private String freemarker_default_encoding;
     @Value("${cookie.locale_age}")
     private int localeAge;
-
+    @Autowired
+    private MessageSource messageSource;
     @Autowired
     @Qualifier("site_interceptor")
     private AsyncHandlerInterceptor siteInterceptor;
+
+    @Override
+    public Validator getValidator() {
+        LocalValidatorFactoryBean validatorFactoryBean = new LocalValidatorFactoryBean();
+        validatorFactoryBean.setValidationMessageSource(messageSource);
+        return validatorFactoryBean;
+    }
 
 
     private static final String RESOURCES_LOCATION = "/resources/";
@@ -106,6 +118,7 @@ public class MVCConfig extends WebMvcConfigurerAdapter {
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.add(jacksonHttpMessageConverter());
+        converters.add(new ByteArrayHttpMessageConverter());
     }
 
     @Bean
@@ -145,4 +158,6 @@ public class MVCConfig extends WebMvcConfigurerAdapter {
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
+
+
 }

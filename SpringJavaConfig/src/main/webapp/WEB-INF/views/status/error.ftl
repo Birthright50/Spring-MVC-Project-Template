@@ -1,7 +1,7 @@
 <#include "../templates/body.ftl"/>
 <@body title="Error">
 <h1>Error</h1>
-<h2>ooops</h2>
+<h2>ooops + ${message}</h2>
 <div class="more_w3ls">
     <a href="/">Try Once Again</a>
 </div>

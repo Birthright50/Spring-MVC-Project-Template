@@ -75,6 +75,7 @@
           <element id="library" level="project" name="Maven: com.infradna.tool:bridge-method-annotation:1.13" />
           <element id="library" level="project" name="Maven: com.querydsl:querydsl-jpa:4.1.4" />
           <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.16.14" />
+          <element id="library" level="project" name="Maven: org.codehaus.groovy:groovy-all:2.4.10" />
         </element>
       </element>
       <element id="directory" name="META-INF">

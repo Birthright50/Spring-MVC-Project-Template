@@ -1,7 +1,9 @@
-package com.birthright.infrastructure.configuration;
+package com.birthright.infrastructure.root;
 
-import com.birthright.infrastructure.configuration.db.JpaPersistenceConfig;
-import com.birthright.infrastructure.configuration.security.SecurityConfig;
+import com.birthright.infrastructure.PropertySourceConfig;
+import com.birthright.infrastructure.root.async.AsyncConfig;
+import com.birthright.infrastructure.root.db.JpaPersistenceConfig;
+import com.birthright.infrastructure.root.security.SecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
@@ -12,18 +14,17 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import org.springframework.core.env.Environment;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import javax.net.ssl.SSLSocketFactory;
+import java.io.IOException;
 import java.util.Properties;
 
 /**
  * Created by birth on 28.01.2017.
  */
 @Configuration
-@PropertySources(
-        {@PropertySource("classpath:spring/application.properties"),
-                @PropertySource("classpath:spring/${spring.active.profiles:dev}/db.properties")})
-@Import({SecurityConfig.class, JpaPersistenceConfig.class, SchedulerConfig.class})
+@Import({SecurityConfig.class, JpaPersistenceConfig.class, SchedulerConfig.class, PropertySourceConfig.class, AsyncConfig.class})
 @EnableCaching
 @EnableAspectJAutoProxy
 @ComponentScan(value = "com.birthright", excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX, pattern = "com\\.birthright\\.((infrastructure)|(web))\\..*"))
@@ -31,10 +32,13 @@ public class ApplicationConfig {
     @Autowired
     private Environment environment;
 
+
+
     @Bean
     public CacheManager cacheManager() {
         return new ConcurrentMapCacheManager();
     }
+
 
     @Bean
     public JavaMailSender javaMailSenderImpl() {
@@ -54,7 +58,7 @@ public class ApplicationConfig {
     }
 
     @Bean
-    public MessageSource messageSource() {
+    public MessageSource messageSource() throws IOException {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
         messageSource.setBasenames("classpath:i18n/message");
         messageSource.setDefaultEncoding("UTF-8");

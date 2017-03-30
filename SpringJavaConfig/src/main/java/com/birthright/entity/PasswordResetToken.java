@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
@@ -19,14 +20,15 @@ import java.util.Date;
 @EqualsAndHashCode
 @NoArgsConstructor
 @Table(name = "password_reset_token", schema = "public", catalog = "postgres")
-public class PasswordResetToken {
+public class PasswordResetToken implements Serializable {
     private static final int EXPIRATION = 60 * 24;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "token", nullable = false)
     private String token;
+
 
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false, unique = true)

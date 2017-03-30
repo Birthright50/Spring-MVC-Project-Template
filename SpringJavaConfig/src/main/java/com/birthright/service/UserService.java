@@ -64,7 +64,7 @@ public class UserService implements UserDetailsService, IUserService {
                 .username(userDto.getUsername())
                 .roles(Collections.singletonList(roleRepository.findByName(Role.USER.name())))
                 .build();
-        return saveWithPasswordChanging(user);
+        return save(user, true);
     }
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
@@ -95,13 +95,15 @@ public class UserService implements UserDetailsService, IUserService {
 
     @Override
     @Transactional
-    public User save(User user) {
+    public User save(User user, boolean changePassword) {
+        if(changePassword){
+            user.setPassword(encoder.encode(user.getPassword()));
+        }
         return userRepository.save(user);
     }
 
-
     @Override
-    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
+    @Transactional(readOnly = true)
     public User findUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }
@@ -110,13 +112,6 @@ public class UserService implements UserDetailsService, IUserService {
     @Transactional
     public User changeUserPassword(User user, String password) {
         user.setPassword(encoder.encode(password));
-        return userRepository.save(user);
-    }
-
-    @Override
-    @Transactional
-    public User saveWithPasswordChanging(User user) {
-        user.setPassword(encoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 

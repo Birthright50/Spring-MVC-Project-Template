@@ -20,6 +20,7 @@ public class Logging {
 
     @After("logging()")
     public void log(JoinPoint joinPoint){
+
         log.info(joinPoint.toShortString() + " called...");
     }
 }

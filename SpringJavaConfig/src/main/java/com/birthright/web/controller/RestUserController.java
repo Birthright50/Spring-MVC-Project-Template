@@ -15,8 +15,7 @@ public class RestUserController {
     private IUserService userService;
 
     @PostMapping("/register/check_user")
-    public String checkUserIfExists(@RequestParam String username,
-                                    @RequestParam String email) {
+    public String checkUserIfExists(@RequestParam String username, @RequestParam String email) {
         return userService.checkUserIsExists(username, email);
     }
 }

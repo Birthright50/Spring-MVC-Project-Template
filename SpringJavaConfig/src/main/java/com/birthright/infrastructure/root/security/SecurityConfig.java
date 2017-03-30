@@ -1,4 +1,4 @@
-package com.birthright.infrastructure.configuration.security;
+package com.birthright.infrastructure.root.security;
 
 import com.birthright.constants.Routes;
 import com.birthright.enumiration.Role;

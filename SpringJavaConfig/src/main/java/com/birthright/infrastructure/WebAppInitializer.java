@@ -1,7 +1,7 @@
 package com.birthright.infrastructure;
 
-import com.birthright.infrastructure.configuration.ApplicationConfig;
-import com.birthright.infrastructure.configuration.web.MVCConfig;
+import com.birthright.infrastructure.root.ApplicationConfig;
+import com.birthright.infrastructure.servlet.MVCConfig;
 import com.birthright.listeners.SessionListener;
 import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
 import org.springframework.web.context.WebApplicationContext;
@@ -74,7 +74,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
     @Override
     protected FrameworkServlet createDispatcherServlet(WebApplicationContext servletAppContext) {
-        final DispatcherServlet dispatcherServlet = new DispatcherServlet(servletAppContext);
+        DispatcherServlet dispatcherServlet = new DispatcherServlet(servletAppContext);
         //for error-page
         dispatcherServlet.setThrowExceptionIfNoHandlerFound(true);
         return dispatcherServlet;
@@ -83,8 +83,9 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
     @Override
     protected void customizeRegistration(ServletRegistration.Dynamic registration) {
+
         MultipartConfigElement multipartConfigElement =
-                new MultipartConfigElement("",
+                new MultipartConfigElement(null,
                         maxUploadSizeInMb, -1, 0);
         registration.setMultipartConfig(multipartConfigElement);
     }

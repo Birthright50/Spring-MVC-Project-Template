@@ -2,16 +2,45 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55c2b684-bfb8-43c3-b5df-b930a1b1814f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/aspects/Logging.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/SchedulerConfig.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/async/AsyncConfig.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/async/CompletableExecutorService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/async/CompletableExecutors.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/ApplicationConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/ApplicationConfig.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/PropertySourceConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/PropertySourceConfig.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/SchedulerConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/SchedulerConfig.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/db/DataSourceConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/db/DataSourceConfig.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/db/JpaPersistenceConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/db/JpaPersistenceConfig.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/security/AccessDeniedServletRequestHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/security/AccessDeniedServletRequestHandler.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/security/SecurityConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/security/SecurityConfig.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/web/MVCConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/servlet/MVCConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/SpringJavaConfig_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/SpringJavaConfig_war_exploded.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/entity/BaseAuditingEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/entity/BaseAuditingEntity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/ApplicationConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/ApplicationConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/PropertySourceConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/PropertySourceConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/web/MVCConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/web/MVCConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SpringJavaConfig.iml" afterPath="$PROJECT_DIR$/SpringJavaConfig.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/aspects/Logging.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/aspects/Logging.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/constants/SecurityConstants.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/constants/SecurityConstants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/entity/PasswordResetToken.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/entity/PasswordResetToken.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/entity/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/entity/User.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/entity/VerificationToken.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/entity/VerificationToken.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/WebAppInitializer.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/WebAppInitializer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/listeners/SetupDataOnStartListener.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/listeners/SetupDataOnStartListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/repository/PasswordResetTokenRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/repository/PasswordResetTokenRepository.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/repository/custom/JpaTokenRepositoryImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/repository/custom/JpaTokenRepositoryImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/service/SecureService.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/service/SecureService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/service/UserService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/service/VerificationEmailService.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/service/VerificationEmailService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/service/interfaces/IUserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/service/interfaces/IUserService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/util/UsernameAuditorAware.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/util/UsernameAuditorAware.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/web/controller/LoginController.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/web/controller/LoginController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/web/controller/RegistrationController.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/web/controller/RegistrationController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/web/controller/RestUserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/web/controller/RestUserController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/web/controller/RootController.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/web/controller/RootController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/web/interceptor/SiteInterceptor.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/web/interceptor/SiteInterceptor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/birthright/web/handler/GlobalExceptionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/birthright/web/handler/GlobalExceptionHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/spring/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/spring/application.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/root/index.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/root/index.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/status/error.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/status/error.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/templates/body.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/templates/body.ftl" />
     </list>
     <ignored path="AutoServ.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -81,209 +110,92 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ApplicationConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/ApplicationConfig.java">
+      <file leaf-file-name="UserDto.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/web/dto/UserDto.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state relative-caret-position="-7">
+              <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Logging.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/aspects/Logging.java">
+      <file leaf-file-name="UsernameAuditorAware.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/util/UsernameAuditorAware.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="16" column="25" lean-forward="false" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/web/controller/LoginController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-289">
-              <caret line="57" column="41" lean-forward="false" selection-start-line="57" selection-start-column="41" selection-end-line="57" selection-end-column="41" />
+            <state relative-caret-position="23">
+              <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ThreadPoolExecutor.java" pinned="false" current-in-tab="false">
-        <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/concurrent/ThreadPoolExecutor.java">
+      <file leaf-file-name="SecureService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/service/SecureService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4777">
-              <caret line="318" column="13" lean-forward="false" selection-start-line="318" selection-start-column="13" selection-end-line="318" selection-end-column="13" />
+            <state relative-caret-position="136">
+              <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MVCConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/web/MVCConfig.java">
+      <file leaf-file-name="UserService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/service/UserService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="39" column="23" lean-forward="true" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="146">
+              <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SpringLocalModels/module=SpringJavaConfig" pinned="false" current-in-tab="false">
-        <entry file="uml://SpringLocalModels/module=SpringJavaConfig">
-          <provider selected="true" editor-type-id="UmlEditorProvider">
-            <state>
-              <ID>SpringLocalModels</ID>
-              <OriginalElement>module=SpringJavaConfig</OriginalElement>
-              <nodes>
-                <node x="0.0" y="153.75">module=SpringJavaConfig</node>
-                <node x="209.0" y="47.265840220385655">fileset=SpringJavaConfig/MVC dispatcher initializer servlet context</node>
-                <node x="574.0" y="47.265840220385655">com.birthright.infrastructure.configuration.web.MVCConfig</node>
-                <node x="810.0" y="0.0">org.springframework.web.servlet.config.annotation.EnableWebMvc</node>
-                <node x="765.0" y="60.0">org.springframework.data.web.config.EnableSpringDataWebSupport</node>
-                <node x="780.0" y="120.0">org.springframework.context.annotation.EnableAspectJAutoProxy</node>
-                <node x="216.5" y="247.5">fileset=SpringJavaConfig/MVC dispatcher initializer root context</node>
-                <node x="554.0" y="247.5">com.birthright.infrastructure.configuration.ApplicationConfig</node>
-                <node x="813.0" y="240.0">com.birthright.infrastructure.configuration.security.SecurityConfig</node>
-                <node x="1086.0" y="210.0">org.springframework.security.config.annotation.web.configuration.EnableWebSecurity</node>
-                <node x="1056.5" y="270.0">org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity</node>
-                <node x="791.5" y="496.9731404958678">com.birthright.infrastructure.configuration.db.JpaPersistenceConfig</node>
-                <node x="802.0" y="556.9731404958678">com.birthright.infrastructure.configuration.db.DataSourceConfig</node>
-                <node x="1050.0" y="570.0">org.springframework.transaction.annotation.EnableTransactionManagement</node>
-                <node x="1074.5" y="510.0">org.springframework.data.jpa.repository.config.EnableJpaRepositories</node>
-                <node x="1086.5" y="450.0">org.springframework.data.jpa.repository.config.EnableJpaAuditing</node>
-                <node x="807.0" y="360.0">com.birthright.infrastructure.configuration.SchedulerConfig</node>
-                <node x="1090.5" y="390.0">org.springframework.scheduling.annotation.EnableScheduling</node>
-                <node x="1105.5" y="330.0">org.springframework.scheduling.annotation.EnableAsync</node>
-                <node x="812.5" y="180.0">org.springframework.cache.annotation.EnableCaching</node>
-              </nodes>
-              <notes />
-              <edges>
-                <edge source="module=SpringJavaConfig" target="fileset=SpringJavaConfig/MVC dispatcher initializer root context">
-                  <point x="64.5" y="5.0" />
-                  <point x="-125.0" y="-0.0" />
-                </edge>
-                <edge source="com.birthright.infrastructure.configuration.ApplicationConfig" target="com.birthright.infrastructure.configuration.db.JpaPersistenceConfig">
-                  <point x="65.5" y="7.272727272727252" />
-                  <point x="765.0" y="511.9731404958678" />
-                  <point x="-76.0" y="5.0" />
-                </edge>
-                <edge source="com.birthright.infrastructure.configuration.ApplicationConfig" target="com.birthright.infrastructure.configuration.security.SecurityConfig">
-                  <point x="65.5" y="-0.0" />
-                  <point x="-54.5" y="7.5" />
-                </edge>
-                <edge source="com.birthright.infrastructure.configuration.web.MVCConfig" target="org.springframework.data.web.config.EnableSpringDataWebSupport">
-                  <point x="45.5" y="-0.0" />
-                  <point x="685.0" y="57.265840220385655" />
-                  <point x="-102.5" y="-0.0" />
-                </edge>
-                <edge source="com.birthright.infrastructure.configuration.security.SecurityConfig" target="org.springframework.security.config.annotation.web.configuration.EnableWebSecurity">
-                  <point x="54.5" y="-5.0" />
-                  <point x="970.0" y="245.0" />
-                  <point x="1050.0" y="220.0" />
-                  <point x="-68.5" y="-0.0" />
-                </edge>
-                <edge source="com.birthright.infrastructure.configuration.ApplicationConfig" target="com.birthright.infrastructure.configuration.SchedulerConfig">
-                  <point x="65.5" y="1.818181818181813" />
-                  <point x="765.0" y="365.0" />
-                  <point x="-60.5" y="-5.0" />
-                </edge>
-                <edge source="com.birthright.infrastructure.configuration.security.SecurityConfig" target="org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity">
-                  <point x="54.5" y="5.0" />
-                  <point x="970.0" y="255.0" />
-                  <point x="-98.0" y="-0.0" />
-                </edge>
-                <edge source="fileset=SpringJavaConfig/MVC dispatcher initializer servlet context" target="com.birthright.infrastructure.configuration.web.MVCConfig">
-                  <point x="132.5" y="-0.0" />
-                  <point x="-45.5" y="-0.0" />
-                </edge>
-                <edge source="com.birthright.infrastructure.configuration.SchedulerConfig" target="org.springframework.scheduling.annotation.EnableScheduling">
-                  <point x="60.5" y="5.0" />
-                  <point x="970.0" y="375.0" />
-                  <point x="1050.0" y="400.0" />
-                  <point x="-64.0" y="-0.0" />
-                </edge>
-                <edge source="com.birthright.infrastructure.configuration.web.MVCConfig" target="org.springframework.context.annotation.EnableAspectJAutoProxy">
-                  <point x="45.5" y="6.666666666666671" />
-                  <point x="685.0" y="63.93250688705234" />
-                  <point x="765.0" y="125.0" />
-                  <point x="-87.5" y="-5.0" />
-                </edge>
-                <edge source="com.birthright.infrastructure.configuration.db.JpaPersistenceConfig" target="org.springframework.transaction.annotation.EnableTransactionManagement">
-                  <point x="76.0" y="6.666666666666629" />
-                  <point x="970.0" y="513.6398071625345" />
-                  <point x="-104.5" y="-0.0" />
-                </edge>
-                <edge source="com.birthright.infrastructure.configuration.db.JpaPersistenceConfig" target="org.springframework.data.jpa.repository.config.EnableJpaAuditing">
-                  <point x="76.0" y="-6.666666666666686" />
-                  <point x="970.0" y="500.3064738292012" />
-                  <point x="1050.0" y="460.0" />
-                  <point x="-68.0" y="-0.0" />
-                </edge>
-                <edge source="com.birthright.infrastructure.configuration.ApplicationConfig" target="com.birthright.infrastructure.configuration.web.MVCConfig">
-                  <point x="0.0" y="-10.0" />
-                  <point x="0.0" y="10.0" />
-                </edge>
-                <edge source="com.birthright.infrastructure.configuration.ApplicationConfig" target="org.springframework.context.annotation.EnableAspectJAutoProxy">
-                  <point x="65.5" y="-9.090909090909093" />
-                  <point x="765.0" y="135.0" />
-                  <point x="-87.5" y="5.0" />
-                </edge>
-                <edge source="com.birthright.infrastructure.configuration.web.MVCConfig" target="org.springframework.web.servlet.config.annotation.EnableWebMvc">
-                  <point x="45.5" y="-6.666666666666664" />
-                  <point x="685.0" y="50.599173553719" />
-                  <point x="765.0" y="10.0" />
-                  <point x="-57.5" y="-0.0" />
-                </edge>
-                <edge source="com.birthright.infrastructure.configuration.db.JpaPersistenceConfig" target="org.springframework.data.jpa.repository.config.EnableJpaRepositories">
-                  <point x="76.0" y="-0.0" />
-                  <point x="970.0" y="506.9731404958678" />
-                  <point x="1050.0" y="520.0" />
-                  <point x="-80.0" y="-0.0" />
-                </edge>
-                <edge source="com.birthright.infrastructure.configuration.ApplicationConfig" target="com.birthright.infrastructure.configuration.db.DataSourceConfig">
-                  <point x="65.5" y="9.090909090909065" />
-                  <point x="765.0" y="566.9731404958678" />
-                  <point x="-65.5" y="-0.0" />
-                </edge>
-                <edge source="com.birthright.infrastructure.configuration.SchedulerConfig" target="org.springframework.scheduling.annotation.EnableAsync">
-                  <point x="60.5" y="-5.0" />
-                  <point x="970.0" y="365.0" />
-                  <point x="1050.0" y="340.0" />
-                  <point x="-49.0" y="-0.0" />
-                </edge>
-                <edge source="com.birthright.infrastructure.configuration.db.JpaPersistenceConfig" target="com.birthright.infrastructure.configuration.db.DataSourceConfig">
-                  <point x="0.0" y="10.0" />
-                  <point x="0.0" y="-10.0" />
-                </edge>
-                <edge source="fileset=SpringJavaConfig/MVC dispatcher initializer root context" target="com.birthright.infrastructure.configuration.ApplicationConfig">
-                  <point x="125.0" y="-0.0" />
-                  <point x="-65.5" y="-0.0" />
-                </edge>
-                <edge source="module=SpringJavaConfig" target="fileset=SpringJavaConfig/MVC dispatcher initializer servlet context">
-                  <point x="64.5" y="-5.0" />
-                  <point x="-132.5" y="-0.0" />
-                </edge>
-                <edge source="com.birthright.infrastructure.configuration.ApplicationConfig" target="org.springframework.cache.annotation.EnableCaching">
-                  <point x="65.5" y="-7.2727272727272805" />
-                  <point x="765.0" y="190.0" />
-                  <point x="-55.0" y="-0.0" />
-                </edge>
-              </edges>
-              <settings layout="Hierarchic Group" zoom="0.6121970289288506" x="382.0306513409962" y="355.4380587484036" />
-              <SelectedNodes>
-                <node>module=SpringJavaConfig</node>
-                <node>org.springframework.cache.annotation.EnableCaching</node>
-              </SelectedNodes>
-              <Categories>
-                <Category>Show filesets as groups</Category>
-              </Categories>
+      <file leaf-file-name="PasswordResetTokenService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/service/PasswordResetTokenService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VerificationTokenRepository.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/repository/VerificationTokenRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CompletableExecutors.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/async/CompletableExecutors.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="28" column="40" lean-forward="false" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RestUserController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/web/controller/RestUserController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="13" column="14" lean-forward="true" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CompletableExecutorService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/async/CompletableExecutorService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="185">
+              <caret line="25" column="29" lean-forward="false" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -291,45 +203,9 @@
       <file leaf-file-name="RootController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/web/controller/RootController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="11" column="29" lean-forward="false" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SchedulerConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/SchedulerConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="26" column="43" lean-forward="false" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Executors.java" pinned="false" current-in-tab="false">
-        <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/concurrent/Executors.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="287" column="4" lean-forward="false" selection-start-line="287" selection-start-column="4" selection-end-line="287" selection-end-column="4" />
+            <state relative-caret-position="201">
+              <caret line="16" column="55" lean-forward="false" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PropertySourceConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/PropertySourceConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -347,37 +223,17 @@
         <option value="SCSS File" />
         <option value="JavaScript File" />
         <option value="Freemarker File" />
-        <option value="Interface" />
         <option value="Enum" />
         <option value="Aspect" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>subm</find>
-      <find>defau</find>
-      <find>before</find>
-      <find>wthree-text</find>
-      <find>agilesign-form</find>
-      <find>token</find>
-      <find>delete</find>
-      <find>random</find>
-      <find>font</find>
-      <find>getPasswordResetToken()</find>
-      <find>key</find>
-      <find>put</find>
-      <find>hashCode</find>
-      <find>close</find>
-      <find>final</find>
-      <find>finalize</find>
-      <find>close()</find>
-      <find>sort()</find>
-      <find>Comparator</find>
       <find>loadUser</find>
       <find>sleep</find>
-      <find>add</find>
       <find>getMessage</find>
       <find>spring-aop</find>
       <find>createQu</find>
@@ -386,6 +242,26 @@
       <find>getPro</find>
       <find>spring-dat</find>
       <find>shutdown</find>
+      <find>prefix</find>
+      <find>after</find>
+      <find>getVa</find>
+      <find>execute</find>
+      <find>equals</find>
+      <find>get</find>
+      <find>getNode</find>
+      <find>hashCode</find>
+      <find>putV</find>
+      <find>capasy</find>
+      <find>return user</find>
+      <find>hashCo</find>
+      <find>addFirst</find>
+      <find>putVal</find>
+      <find>put</find>
+      <find>remove</find>
+      <find>start</find>
+      <find>add</find>
+      <find>current</find>
+      <find>fork</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -399,57 +275,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/repository/custom/JpaTokenRepositoryImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/service/SecureService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/repository/custom/Test.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/test/Writer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/test/MessageDecorator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/test/WeakKeyReturningAdvice.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/service/interfaces/IPasswordResetTokenService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/service/interfaces/ISecureService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/test/KeyGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/test/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/helper/AppHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/helper/UrlApplicationHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/test/MessageWriter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/test/MessageWrapper.aj" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/test/App.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/listeners/ss.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/util/MessageWriter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/util/MessageWrapper.aj" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/util/app.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/util/UrlApplicationHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/db/DataSourceConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/util/AuditingDateTimeProvider.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/entity/VerificationToken.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/entity/PersistentLogin.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/event/OnRegistrationCompleteEvent.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/spring/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/entity/PasswordResetToken.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/entity/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/service/UserService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/util/CreatePDF.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/log4j2.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/web/controller/ll.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/util/UsernameAuditorAware.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/util/UserDetailsImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/db/JpaPersistenceConfig.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/log4j2.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/web/controller/main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/entity/BaseAuditingEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/web/interceptor/SiteInterceptor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/web/controller/LoginController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/repository/VerificationTokenRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/listeners/SessionListener.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/web/controller/RegistrationController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/service/AsyncService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/web/controller/RootController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/PropertySourceConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/web/MVCConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/db/DataSourceConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/db/JpaPersistenceConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/ApplicationConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/SchedulerConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/web/MVCConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/PropertySourceConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/service/VerificationEmailService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/AsyncConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/async/CompletableExecutorService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/async/CompletableExecutor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/async/CompletableExecutors.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/web/controller/RestUserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/service/interfaces/IUserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/service/SecureService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/listeners/SetupDataOnStartListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/WebAppInitializer.java" />
+        <option value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/HTML5.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/servlet/EchoHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/web/controller/Stock.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/web/controller/StockController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/servlet/WebSocketMessageBrokerConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/ApplicationConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/constants/SecurityConstants.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/entity/Role.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/birthright/aspects/Logging.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/util/SuperServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/repository/UserRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/web/handler/GlobalExceptionHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/templates/body.ftl" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/root/index.ftl" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/security/example.groovy" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/servlet/MVCConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/db/JpaPersistenceConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/repository/PasswordResetTokenRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/repository/PersistentLoginRepository.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/entity/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/db/DataSourceConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/event/OnRegistrationCompleteEvent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/SchedulerConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/security/ForkJoinTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/security/SwingThreadTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/async/AsyncConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/status/error.ftl" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/web/controller/RegistrationController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/entity/PasswordResetToken.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/entity/VerificationToken.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/repository/custom/JpaTokenRepositoryImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/birthright/web/controller/RootController.java" />
       </list>
     </option>
   </component>
@@ -475,92 +351,6 @@
   </component>
   <component name="MavenProjectNavigator">
     <treeState>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="spring.java.template" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Dependencies" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependenciesNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="spring.java.template" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Dependencies" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependenciesNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="org.springframework.data:spring-data-jpa:1.11.0.RELEASE" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependencyNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="spring.java.template" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Dependencies" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependenciesNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="org.springframework:spring-orm:4.3.7.RELEASE" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependencyNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="spring.java.template" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Dependencies" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependenciesNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="org.springframework:spring-tx:4.3.7.RELEASE" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependencyNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="spring.java.template" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Dependencies" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependenciesNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="org.springframework:spring-webmvc:4.3.7.RELEASE" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependencyNode" />
-        </PATH_ELEMENT>
-      </PATH>
       <PATH>
         <PATH_ELEMENT>
           <option name="myItemId" value="" />
@@ -683,6 +473,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -709,6 +500,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpringJavaConfig" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpringJavaConfig" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -716,6 +525,14 @@
               <option name="myItemId" value="webapp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -732,6 +549,44 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="status" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpringJavaConfig" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpringJavaConfig" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -758,10 +613,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spring" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -828,6 +679,44 @@
               <option name="myItemId" value="web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="handler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpringJavaConfig" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpringJavaConfig" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="birthright" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dto" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -886,10 +775,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="birthright" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="validation" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1009,6 +894,40 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="repository" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="custom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpringJavaConfig" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpringJavaConfig" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="birthright" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="listeners" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -1073,7 +992,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="configuration" />
+              <option name="myItemId" value="servlet" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1107,11 +1026,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="configuration" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
+              <option name="myItemId" value="root" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1138,6 +1053,214 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="birthright" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="infrastructure" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="root" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="security" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpringJavaConfig" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpringJavaConfig" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="birthright" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="infrastructure" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="root" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpringJavaConfig" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpringJavaConfig" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="birthright" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="infrastructure" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="root" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="async" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpringJavaConfig" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpringJavaConfig" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="birthright" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="event" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpringJavaConfig" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpringJavaConfig" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="birthright" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="enumiration" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpringJavaConfig" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpringJavaConfig" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="birthright" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="entity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpringJavaConfig" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SpringJavaConfig" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="birthright" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="constants" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1173,7 +1296,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -1497,9 +1619,9 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.3873563" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Chapter17/Chapter17/stomp" />
     <property name="JPA.DatabaseSchemaImportDialog" value="c1810972-287d-490e-8b4d-c73e5d1cd683" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.folding" />
+    <property name="settings.editor.selected.configurable" value="Groovy compiler" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="js.eslint.eslintPackage" value="" />
@@ -1519,11 +1641,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.birthright.web" />
       <recent name="com.birthright.web.controller" />
       <recent name="com.birthright.service" />
       <recent name="com.birthright.validation" />
       <recent name="com.birthright.controllers" />
-      <recent name="com.birthright.configuration" />
     </key>
     <key name="ImportMappingsDialog.RecentPackages">
       <recent name="com.birthright.entity" />
@@ -1811,6 +1933,46 @@
     </option>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomca 9.0.0.M4">
+    <configuration default="false" name="ForkJoinTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.birthright.infrastructure.root.security.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.birthright.infrastructure.root.security.ForkJoinTest" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="SpringJavaConfig" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="SwingThreadTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.birthright.infrastructure.root.security.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.birthright.infrastructure.root.security.SwingThreadTest" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="SpringJavaConfig" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
       <deployment />
       <server-settings>
@@ -2130,6 +2292,15 @@
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <method />
     </configuration>
+    <configuration default="true" type="GroovyScriptRunConfiguration" factoryName="Groovy">
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workDir" value="file://$PROJECT_DIR$" />
+      <setting name="debug" value="false" />
+      <method />
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -2368,9 +2539,17 @@
         </option>
       </method>
     </configuration>
-    <list size="1">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Tomcat Server.Tomca 9.0.0.M4" />
+      <item index="1" class="java.lang.String" itemvalue="Application.ForkJoinTest" />
+      <item index="2" class="java.lang.String" itemvalue="Application.SwingThreadTest" />
     </list>
+    <recent_temporary>
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Application.SwingThreadTest" />
+        <item index="1" class="java.lang.String" itemvalue="Application.ForkJoinTest" />
+      </list>
+    </recent_temporary>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="DEPLOY" value="true" />
@@ -2498,12 +2677,22 @@
       <workItem from="1489762584592" duration="2800000" />
       <workItem from="1489873206444" duration="11264000" />
       <workItem from="1489925375518" duration="18709000" />
-      <workItem from="1490024821752" duration="14920000" />
+      <workItem from="1490024821752" duration="14944000" />
+      <workItem from="1490101908249" duration="607000" />
+      <workItem from="1490112338035" duration="9930000" />
+      <workItem from="1490287088173" duration="10137000" />
+      <workItem from="1490309794838" duration="14934000" />
+      <workItem from="1490388834952" duration="9192000" />
+      <workItem from="1490558505386" duration="6809000" />
+      <workItem from="1490608298701" duration="18527000" />
+      <workItem from="1490659218656" duration="2550000" />
+      <workItem from="1490741938592" duration="33453000" />
+      <workItem from="1490907071819" duration="7287000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1229989000" />
+    <option name="totallyTimeSpent" value="1343439000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -2522,7 +2711,7 @@
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23856209" sideWeight="0.42586988" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32789558" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16540785" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15483384" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2530,7 +2719,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24449877" sideWeight="0.18571429" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5204583" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23491028" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32789558" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26916802" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2538,14 +2727,13 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32789558" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32789558" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24796085" sideWeight="0.5741301" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2365416" sideWeight="0.5741301" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32463294" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32789558" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27398312" sideWeight="0.6234004" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24320242" sideWeight="0.7287234" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29380664" sideWeight="0.7156177" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17754173" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24622357" sideWeight="0.2712766" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17128874" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27265862" sideWeight="0.28438228" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30012226" sideWeight="0.50391936" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -2557,6 +2745,7 @@
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5628059" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2593801" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -2653,14 +2842,14 @@
           <properties />
           <option name="timeStamp" value="46" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-core/5.2.7.Final/hibernate-core-5.2.7.Final-sources.jar!/org/hibernate/Session.java</url>
-          <line>82</line>
-          <properties />
-          <option name="timeStamp" value="51" />
+        <line-breakpoint enabled="true" type="java-method">
+          <url>jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/LinkedList.java</url>
+          <line>291</line>
+          <properties class="java.util.LinkedList" method="addFirst" />
+          <option name="timeStamp" value="64" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="59" />
+      <option name="time" value="65" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2755,83 +2944,135 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/entity/BaseAuditingEntity.java">
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        <state relative-caret-position="149">
+          <caret line="1321" column="22" lean-forward="false" selection-start-line="1321" selection-start-column="22" selection-end-line="1321" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/4.3.7.RELEASE/spring-beans-4.3.7.RELEASE-sources.jar!/org/springframework/beans/factory/support/AbstractAutowireCapableBeanFactory.java">
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2766">
-          <caret line="1010" column="0" lean-forward="false" selection-start-line="1010" selection-start-column="0" selection-end-line="1010" selection-end-column="0" />
+        <state relative-caret-position="140">
+          <caret line="825" column="16" lean-forward="false" selection-start-line="825" selection-start-column="16" selection-end-line="825" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/4.2.1.RELEASE/spring-security-config-4.2.1.RELEASE-sources.jar!/org/springframework/security/config/annotation/configuration/ObjectPostProcessorConfiguration.java">
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/concurrent/locks/ReentrantLock.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="39" column="39" lean-forward="false" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
-          <folding />
+        <state relative-caret-position="138">
+          <caret line="105" column="40" lean-forward="false" selection-start-line="105" selection-start-column="40" selection-end-line="105" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/SecurityAppInitializer.java">
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/concurrent/locks/Lock.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.3.7.RELEASE/spring-webmvc-4.3.7.RELEASE-sources.jar!/org/springframework/web/servlet/handler/HandlerInterceptorAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="31" column="82" lean-forward="false" selection-start-line="31" selection-start-column="59" selection-end-line="31" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/Object.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="234" column="18" lean-forward="false" selection-start-line="234" selection-start-column="18" selection-end-line="234" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/aspectj/aspectjweaver/1.8.10/aspectjweaver-1.8.10-sources.jar!/org/aspectj/lang/JoinPoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="47" column="11" lean-forward="false" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="11" />
+        <state relative-caret-position="2193">
+          <caret line="162" column="2" lean-forward="false" selection-start-line="162" selection-start-column="2" selection-end-line="162" selection-end-column="2" />
           <folding>
-            <element signature="e#0#7354#0" expanded="false" />
+            <element signature="e#0#14202#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/aspectj/aspectjweaver/1.8.10/aspectjweaver-1.8.10-sources.jar!/org/aspectj/lang/Signature.java">
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/jre/lib/rt.jar!/sun/reflect/NativeMethodAccessorImpl.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="62" column="11" lean-forward="false" selection-start-line="62" selection-start-column="11" selection-end-line="62" selection-end-column="11" />
+        <state relative-caret-position="272">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/Vector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12529">
+          <caret line="762" column="7" lean-forward="false" selection-start-line="762" selection-start-column="7" selection-end-line="762" selection-end-column="7" />
           <folding>
-            <element signature="e#0#3628#0" expanded="false" />
+            <element signature="e#0#53988#0" expanded="false" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j2.properties">
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/jre/lib/rt.jar!/sun/misc/Unsafe.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="1" selection-end-line="23" selection-end-column="43" />
+        <state relative-caret-position="527">
+          <caret line="39" column="22" lean-forward="false" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/logs/propertieslogs.log">
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/concurrent/atomic/LongAdder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="85" column="21" lean-forward="false" selection-start-line="85" selection-start-column="21" selection-end-line="85" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#7290#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/concurrent/atomic/Striped64.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1904">
+          <caret line="147" column="30" lean-forward="false" selection-start-line="147" selection-start-column="30" selection-end-line="147" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#16420#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/concurrent/atomic/AtomicInteger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="89" column="21" lean-forward="false" selection-start-line="89" selection-start-column="21" selection-end-line="89" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#9642#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/concurrent/atomic/AtomicLong.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="103" column="22" lean-forward="false" selection-start-line="103" selection-start-column="22" selection-end-line="103" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/Random.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2856">
+          <caret line="201" column="28" lean-forward="false" selection-start-line="201" selection-start-column="28" selection-end-line="201" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#48091#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/concurrent/ThreadLocalRandom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2754">
+          <caret line="206" column="22" lean-forward="false" selection-start-line="206" selection-start-column="22" selection-end-line="206" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#39362#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/db/DataSourceConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -2839,49 +3080,259 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/repository/UserRepository.java">
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/concurrent/BlockingDeque.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        <state relative-caret-position="195">
+          <caret line="199" column="47" lean-forward="true" selection-start-line="199" selection-start-column="47" selection-end-line="199" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/repository/VerificationTokenRepository.java">
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/Queue.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="3" lean-forward="false" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+        <state relative-caret-position="1358">
+          <caret line="208" column="16" lean-forward="true" selection-start-line="208" selection-start-column="16" selection-end-line="208" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/concurrent/BlockingQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1564">
+          <caret line="251" column="51" lean-forward="true" selection-start-line="251" selection-start-column="51" selection-end-line="251" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/concurrent/ConcurrentLinkedQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-426">
+          <caret line="325" column="19" lean-forward="false" selection-start-line="325" selection-start-column="19" selection-end-line="325" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/event/OnRegistrationCompleteEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="81" lean-forward="false" selection-start-line="19" selection-start-column="81" selection-end-line="19" selection-end-column="81" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/web/interceptor/SiteInterceptor.java">
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/concurrent/Executors.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="216" column="41" lean-forward="true" selection-start-line="216" selection-start-column="41" selection-end-line="216" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/concurrent/ThreadPoolExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="1295" column="11" lean-forward="false" selection-start-line="1295" selection-start-column="11" selection-end-line="1295" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/concurrent/ScheduledThreadPoolExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="120" column="13" lean-forward="false" selection-start-line="120" selection-start-column="13" selection-end-line="120" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/concurrent/ScheduledExecutorService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="93" column="17" lean-forward="false" selection-start-line="93" selection-start-column="17" selection-end-line="93" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/4.3.7.RELEASE/spring-context-4.3.7.RELEASE-sources.jar!/org/springframework/scheduling/concurrent/ThreadPoolTaskScheduler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1921">
+          <caret line="142" column="39" lean-forward="false" selection-start-line="142" selection-start-column="39" selection-end-line="142" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/concurrent/ForkJoinTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="436" column="15" lean-forward="false" selection-start-line="436" selection-start-column="11" selection-end-line="436" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/concurrent/RecursiveTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="67" column="22" lean-forward="false" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/SchedulerConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="23" column="42" lean-forward="false" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/function/DoublePredicate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="49" column="12" lean-forward="false" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/concurrent/ForkJoinPool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="2484" column="11" lean-forward="false" selection-start-line="2484" selection-start-column="11" selection-end-line="2484" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/security/ForkJoinTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="33" column="44" lean-forward="false" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/awt/EventQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="1264" column="23" lean-forward="false" selection-start-line="1264" selection-start-column="23" selection-end-line="1264" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/security/SwingThreadTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="112" column="44" lean-forward="true" selection-start-line="112" selection-start-column="44" selection-end-line="112" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/async/AsyncConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/status/error.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="21" lean-forward="false" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+          <folding>
+            <marker date="1490914752177" expanded="true" signature="42:460" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/web/controller/RegistrationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="89" column="59" lean-forward="false" selection-start-line="89" selection-start-column="59" selection-end-line="89" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/entity/PasswordResetToken.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="25" column="4" lean-forward="false" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/entity/VerificationToken.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="24" column="51" lean-forward="false" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/concurrent/ExecutorService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3073">
+          <caret line="250" column="18" lean-forward="false" selection-start-line="250" selection-start-column="18" selection-end-line="250" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/repository/custom/JpaTokenRepositoryImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="24" column="65" lean-forward="false" selection-start-line="24" selection-start-column="65" selection-end-line="24" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/listeners/SetupDataOnStartListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-79">
+          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/web/dto/UserDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/util/UsernameAuditorAware.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/service/SecureService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="13" column="12" lean-forward="false" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
+          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/4.3.7.RELEASE/spring-context-4.3.7.RELEASE-sources.jar!/org/springframework/context/annotation/EnableAspectJAutoProxy.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="111" column="23" lean-forward="false" selection-start-line="111" selection-start-column="23" selection-end-line="111" selection-end-column="23" />
+        <state relative-caret-position="146">
+          <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/4.3.7.RELEASE/spring-context-4.3.7.RELEASE-sources.jar!/org/springframework/context/annotation/AspectJAutoProxyRegistrar.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/service/PasswordResetTokenService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-19">
-          <caret line="33" column="6" lean-forward="false" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
+        <state relative-caret-position="136">
+          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/repository/PasswordResetTokenRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/repository/VerificationTokenRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
@@ -2889,450 +3340,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/repository/RoleRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/async/CompletableExecutorService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/repository/PersistentLoginRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/4.3.7.RELEASE/spring-core-4.3.7.RELEASE-sources.jar!/org/springframework/core/convert/support/DefaultConversionService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1156">
-          <caret line="84" column="11" lean-forward="false" selection-start-line="84" selection-start-column="11" selection-end-line="84" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/4.3.7.RELEASE/spring-core-4.3.7.RELEASE-sources.jar!/org/springframework/core/convert/ConversionService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="26" column="17" lean-forward="false" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/4.3.7.RELEASE/spring-context-4.3.7.RELEASE-sources.jar!/org/springframework/context/annotation/PropertySource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="154" column="19" lean-forward="true" selection-start-line="154" selection-start-column="19" selection-end-line="154" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#8400#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/4.3.7.RELEASE/spring-context-4.3.7.RELEASE-sources.jar!/org/springframework/context/annotation/PropertySources.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="39" column="18" lean-forward="false" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#1525#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/logging/log4j/log4j-api/2.8/log4j-api-2.8-sources.jar!/org/apache/logging/log4j/Logger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="2450" column="9" lean-forward="false" selection-start-line="2450" selection-start-column="9" selection-end-line="2450" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/security/AccessController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9">
-          <caret line="847" column="23" lean-forward="false" selection-start-line="847" selection-start-column="23" selection-end-line="847" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/SecurityManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="548" column="44" lean-forward="false" selection-start-line="548" selection-start-column="44" selection-end-line="548" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/ClassLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="1527" column="29" lean-forward="true" selection-start-line="1527" selection-start-column="29" selection-end-line="1527" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/lang/Class.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="682" column="41" lean-forward="true" selection-start-line="682" selection-start-column="41" selection-end-line="682" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/1.13.0.RELEASE/spring-data-commons-1.13.0.RELEASE-sources.jar!/org/springframework/data/querydsl/QueryDslUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="34" column="89" lean-forward="false" selection-start-line="34" selection-start-column="89" selection-end-line="34" selection-end-column="89" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/1.13.0.RELEASE/spring-data-commons-1.13.0.RELEASE-sources.jar!/org/springframework/data/web/config/EnableSpringDataWebSupport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="148" column="43" lean-forward="false" selection-start-line="148" selection-start-column="43" selection-end-line="148" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="234" column="31" lean-forward="false" selection-start-line="234" selection-start-column="31" selection-end-line="234" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/db/JpaPersistenceConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-315">
-          <caret line="34" column="13" lean-forward="false" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/4.3.7.RELEASE/spring-context-4.3.7.RELEASE-sources.jar!/org/springframework/scheduling/annotation/EnableScheduling.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-231">
-          <caret line="116" column="10" lean-forward="false" selection-start-line="116" selection-start-column="10" selection-end-line="116" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/4.3.7.RELEASE/spring-context-4.3.7.RELEASE-sources.jar!/org/springframework/scheduling/annotation/Scheduled.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="82" column="9" lean-forward="false" selection-start-line="82" selection-start-column="9" selection-end-line="82" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#4424#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/web/controller/RegistrationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="57" column="42" lean-forward="false" selection-start-line="57" selection-start-column="42" selection-end-line="57" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/4.3.7.RELEASE/spring-context-4.3.7.RELEASE-sources.jar!/org/springframework/scheduling/annotation/EnableAsync.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="155" column="18" lean-forward="false" selection-start-line="155" selection-start-column="18" selection-end-line="155" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#8009#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/service/AsyncService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="32" column="49" lean-forward="false" selection-start-line="32" selection-start-column="49" selection-end-line="32" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/concurrent/Future.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="150" column="6" lean-forward="false" selection-start-line="150" selection-start-column="6" selection-end-line="150" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/listeners/SessionListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/WebAppInitializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-87">
-          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/4.3.7.RELEASE/spring-context-4.3.7.RELEASE-sources.jar!/org/springframework/scheduling/concurrent/ThreadPoolTaskExecutor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="40" column="79" lean-forward="true" selection-start-line="40" selection-start-column="79" selection-end-line="40" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/concurrent/ThreadPoolExecutor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4777">
-          <caret line="318" column="13" lean-forward="false" selection-start-line="318" selection-start-column="13" selection-end-line="318" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/concurrent/ScheduledThreadPoolExecutor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="694" column="48" lean-forward="false" selection-start-line="694" selection-start-column="40" selection-end-line="694" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/concurrent/Executors.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="287" column="4" lean-forward="false" selection-start-line="287" selection-start-column="4" selection-end-line="287" selection-end-column="4" />
+        <state relative-caret-position="185">
+          <caret line="25" column="29" lean-forward="false" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/web/controller/RootController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="11" column="29" lean-forward="false" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/web/controller/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-289">
-          <caret line="57" column="41" lean-forward="false" selection-start-line="57" selection-start-column="41" selection-end-line="57" selection-end-column="41" />
+        <state relative-caret-position="201">
+          <caret line="16" column="55" lean-forward="false" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/SchedulerConfig.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/root/async/CompletableExecutors.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="26" column="43" lean-forward="false" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/PropertySourceConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/web/MVCConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="39" column="23" lean-forward="true" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://SpringLocalModels/module=SpringJavaConfig">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>SpringLocalModels</ID>
-          <OriginalElement>module=SpringJavaConfig</OriginalElement>
-          <nodes>
-            <node x="0.0" y="153.75">module=SpringJavaConfig</node>
-            <node x="209.0" y="47.265840220385655">fileset=SpringJavaConfig/MVC dispatcher initializer servlet context</node>
-            <node x="574.0" y="47.265840220385655">com.birthright.infrastructure.configuration.web.MVCConfig</node>
-            <node x="810.0" y="0.0">org.springframework.web.servlet.config.annotation.EnableWebMvc</node>
-            <node x="765.0" y="60.0">org.springframework.data.web.config.EnableSpringDataWebSupport</node>
-            <node x="780.0" y="120.0">org.springframework.context.annotation.EnableAspectJAutoProxy</node>
-            <node x="216.5" y="247.5">fileset=SpringJavaConfig/MVC dispatcher initializer root context</node>
-            <node x="554.0" y="247.5">com.birthright.infrastructure.configuration.ApplicationConfig</node>
-            <node x="813.0" y="240.0">com.birthright.infrastructure.configuration.security.SecurityConfig</node>
-            <node x="1086.0" y="210.0">org.springframework.security.config.annotation.web.configuration.EnableWebSecurity</node>
-            <node x="1056.5" y="270.0">org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity</node>
-            <node x="791.5" y="496.9731404958678">com.birthright.infrastructure.configuration.db.JpaPersistenceConfig</node>
-            <node x="802.0" y="556.9731404958678">com.birthright.infrastructure.configuration.db.DataSourceConfig</node>
-            <node x="1050.0" y="570.0">org.springframework.transaction.annotation.EnableTransactionManagement</node>
-            <node x="1074.5" y="510.0">org.springframework.data.jpa.repository.config.EnableJpaRepositories</node>
-            <node x="1086.5" y="450.0">org.springframework.data.jpa.repository.config.EnableJpaAuditing</node>
-            <node x="807.0" y="360.0">com.birthright.infrastructure.configuration.SchedulerConfig</node>
-            <node x="1090.5" y="390.0">org.springframework.scheduling.annotation.EnableScheduling</node>
-            <node x="1105.5" y="330.0">org.springframework.scheduling.annotation.EnableAsync</node>
-            <node x="812.5" y="180.0">org.springframework.cache.annotation.EnableCaching</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="module=SpringJavaConfig" target="fileset=SpringJavaConfig/MVC dispatcher initializer root context">
-              <point x="64.5" y="5.0" />
-              <point x="-125.0" y="-0.0" />
-            </edge>
-            <edge source="com.birthright.infrastructure.configuration.ApplicationConfig" target="com.birthright.infrastructure.configuration.db.JpaPersistenceConfig">
-              <point x="65.5" y="7.272727272727252" />
-              <point x="765.0" y="511.9731404958678" />
-              <point x="-76.0" y="5.0" />
-            </edge>
-            <edge source="com.birthright.infrastructure.configuration.ApplicationConfig" target="com.birthright.infrastructure.configuration.security.SecurityConfig">
-              <point x="65.5" y="-0.0" />
-              <point x="-54.5" y="7.5" />
-            </edge>
-            <edge source="com.birthright.infrastructure.configuration.web.MVCConfig" target="org.springframework.data.web.config.EnableSpringDataWebSupport">
-              <point x="45.5" y="-0.0" />
-              <point x="685.0" y="57.265840220385655" />
-              <point x="-102.5" y="-0.0" />
-            </edge>
-            <edge source="com.birthright.infrastructure.configuration.security.SecurityConfig" target="org.springframework.security.config.annotation.web.configuration.EnableWebSecurity">
-              <point x="54.5" y="-5.0" />
-              <point x="970.0" y="245.0" />
-              <point x="1050.0" y="220.0" />
-              <point x="-68.5" y="-0.0" />
-            </edge>
-            <edge source="com.birthright.infrastructure.configuration.ApplicationConfig" target="com.birthright.infrastructure.configuration.SchedulerConfig">
-              <point x="65.5" y="1.818181818181813" />
-              <point x="765.0" y="365.0" />
-              <point x="-60.5" y="-5.0" />
-            </edge>
-            <edge source="com.birthright.infrastructure.configuration.security.SecurityConfig" target="org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity">
-              <point x="54.5" y="5.0" />
-              <point x="970.0" y="255.0" />
-              <point x="-98.0" y="-0.0" />
-            </edge>
-            <edge source="fileset=SpringJavaConfig/MVC dispatcher initializer servlet context" target="com.birthright.infrastructure.configuration.web.MVCConfig">
-              <point x="132.5" y="-0.0" />
-              <point x="-45.5" y="-0.0" />
-            </edge>
-            <edge source="com.birthright.infrastructure.configuration.SchedulerConfig" target="org.springframework.scheduling.annotation.EnableScheduling">
-              <point x="60.5" y="5.0" />
-              <point x="970.0" y="375.0" />
-              <point x="1050.0" y="400.0" />
-              <point x="-64.0" y="-0.0" />
-            </edge>
-            <edge source="com.birthright.infrastructure.configuration.web.MVCConfig" target="org.springframework.context.annotation.EnableAspectJAutoProxy">
-              <point x="45.5" y="6.666666666666671" />
-              <point x="685.0" y="63.93250688705234" />
-              <point x="765.0" y="125.0" />
-              <point x="-87.5" y="-5.0" />
-            </edge>
-            <edge source="com.birthright.infrastructure.configuration.db.JpaPersistenceConfig" target="org.springframework.transaction.annotation.EnableTransactionManagement">
-              <point x="76.0" y="6.666666666666629" />
-              <point x="970.0" y="513.6398071625345" />
-              <point x="-104.5" y="-0.0" />
-            </edge>
-            <edge source="com.birthright.infrastructure.configuration.db.JpaPersistenceConfig" target="org.springframework.data.jpa.repository.config.EnableJpaAuditing">
-              <point x="76.0" y="-6.666666666666686" />
-              <point x="970.0" y="500.3064738292012" />
-              <point x="1050.0" y="460.0" />
-              <point x="-68.0" y="-0.0" />
-            </edge>
-            <edge source="com.birthright.infrastructure.configuration.ApplicationConfig" target="com.birthright.infrastructure.configuration.web.MVCConfig">
-              <point x="0.0" y="-10.0" />
-              <point x="0.0" y="10.0" />
-            </edge>
-            <edge source="com.birthright.infrastructure.configuration.ApplicationConfig" target="org.springframework.context.annotation.EnableAspectJAutoProxy">
-              <point x="65.5" y="-9.090909090909093" />
-              <point x="765.0" y="135.0" />
-              <point x="-87.5" y="5.0" />
-            </edge>
-            <edge source="com.birthright.infrastructure.configuration.web.MVCConfig" target="org.springframework.web.servlet.config.annotation.EnableWebMvc">
-              <point x="45.5" y="-6.666666666666664" />
-              <point x="685.0" y="50.599173553719" />
-              <point x="765.0" y="10.0" />
-              <point x="-57.5" y="-0.0" />
-            </edge>
-            <edge source="com.birthright.infrastructure.configuration.db.JpaPersistenceConfig" target="org.springframework.data.jpa.repository.config.EnableJpaRepositories">
-              <point x="76.0" y="-0.0" />
-              <point x="970.0" y="506.9731404958678" />
-              <point x="1050.0" y="520.0" />
-              <point x="-80.0" y="-0.0" />
-            </edge>
-            <edge source="com.birthright.infrastructure.configuration.ApplicationConfig" target="com.birthright.infrastructure.configuration.db.DataSourceConfig">
-              <point x="65.5" y="9.090909090909065" />
-              <point x="765.0" y="566.9731404958678" />
-              <point x="-65.5" y="-0.0" />
-            </edge>
-            <edge source="com.birthright.infrastructure.configuration.SchedulerConfig" target="org.springframework.scheduling.annotation.EnableAsync">
-              <point x="60.5" y="-5.0" />
-              <point x="970.0" y="365.0" />
-              <point x="1050.0" y="340.0" />
-              <point x="-49.0" y="-0.0" />
-            </edge>
-            <edge source="com.birthright.infrastructure.configuration.db.JpaPersistenceConfig" target="com.birthright.infrastructure.configuration.db.DataSourceConfig">
-              <point x="0.0" y="10.0" />
-              <point x="0.0" y="-10.0" />
-            </edge>
-            <edge source="fileset=SpringJavaConfig/MVC dispatcher initializer root context" target="com.birthright.infrastructure.configuration.ApplicationConfig">
-              <point x="125.0" y="-0.0" />
-              <point x="-65.5" y="-0.0" />
-            </edge>
-            <edge source="module=SpringJavaConfig" target="fileset=SpringJavaConfig/MVC dispatcher initializer servlet context">
-              <point x="64.5" y="-5.0" />
-              <point x="-132.5" y="-0.0" />
-            </edge>
-            <edge source="com.birthright.infrastructure.configuration.ApplicationConfig" target="org.springframework.cache.annotation.EnableCaching">
-              <point x="65.5" y="-7.2727272727272805" />
-              <point x="765.0" y="190.0" />
-              <point x="-55.0" y="-0.0" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="0.6121970289288506" x="382.0306513409962" y="355.4380587484036" />
-          <SelectedNodes>
-            <node>module=SpringJavaConfig</node>
-            <node>org.springframework.cache.annotation.EnableCaching</node>
-          </SelectedNodes>
-          <Categories>
-            <Category>Show filesets as groups</Category>
-          </Categories>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/infrastructure/configuration/ApplicationConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+        <state relative-caret-position="442">
+          <caret line="28" column="40" lean-forward="false" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/aspects/Logging.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/birthright/web/controller/RestUserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="16" column="25" lean-forward="false" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="153">
+          <caret line="13" column="14" lean-forward="true" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>

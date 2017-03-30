@@ -1,4 +1,4 @@
-package com.birthright.infrastructure.configuration.db;
+package com.birthright.infrastructure.root.db;
 
 import com.birthright.util.UsernameAuditorAware;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,6 @@ import java.util.Properties;
 @EnableTransactionManagement//<!-- activate @Transactional JPA annotation --> <tx:annotation-driven/>
 @EnableJpaRepositories(basePackages = {"com.birthright.repository"}) // Enable and scan Spring Data repositories.
 @EnableJpaAuditing(dateTimeProviderRef = "dateTimeProvider", auditorAwareRef = "auditorProvider")
-
 public class JpaPersistenceConfig {
 
     @Autowired
@@ -44,6 +43,8 @@ public class JpaPersistenceConfig {
     private static final String PROPERTY_NAME_HIBERNATE_FORMAT_SQL = "hibernate.format_sql";
     private static final String PROPERTY_NAME_HIBERNATE_HBM2DDL_AUTO = "hibernate.hbm2ddl.auto";
     private static final String PROPERTY_NAME_HIBERNATE_SHOW_SQL = "hibernate.show_sql";
+    private static final String PROPERTY_NAME_HIBERNATE_GENERATE_STATISTICS = "hibernate.generate_statistics";
+    private static final String PROPERTY_NAME_HIBERNATE_SESSION_FACTORY_NAME = "hibernate.session_factory_name";
 
     /**
      * <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" >
@@ -79,6 +80,8 @@ public class JpaPersistenceConfig {
         properties.setProperty(PROPERTY_NAME_HIBERNATE_DIALECT, environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_DIALECT));
         properties.setProperty(PROPERTY_NAME_HIBERNATE_SHOW_SQL, environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_SHOW_SQL));
         properties.setProperty(PROPERTY_NAME_HIBERNATE_FORMAT_SQL, environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_FORMAT_SQL));
+        properties.setProperty(PROPERTY_NAME_HIBERNATE_SESSION_FACTORY_NAME, environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_SESSION_FACTORY_NAME));
+        properties.setProperty(PROPERTY_NAME_HIBERNATE_GENERATE_STATISTICS, environment.getRequiredProperty(PROPERTY_NAME_HIBERNATE_GENERATE_STATISTICS));
         return properties;
     }
 

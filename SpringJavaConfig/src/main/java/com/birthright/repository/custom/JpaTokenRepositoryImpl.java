@@ -7,6 +7,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.security.web.authentication.rememberme.PersistentRememberMeToken;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
@@ -39,6 +40,7 @@ public class JpaTokenRepositoryImpl implements PersistentTokenRepository {
     }
 
     @Override
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     public PersistentRememberMeToken getTokenForSeries(String seriesId) {
         PersistentLogin persistentLogin = persistentLoginRepository.findOne(seriesId);
         if (persistentLogin != null) {

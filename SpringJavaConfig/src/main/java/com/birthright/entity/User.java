@@ -1,6 +1,8 @@
 package com.birthright.entity;
 
 import lombok.*;
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -9,7 +11,7 @@ import java.util.Collection;
 /**
  * Created by birth on 07.02.2017.
  */
-@Builder
+@Builder(toBuilder = true)
 @Getter
 @Setter
 @AllArgsConstructor
@@ -39,17 +41,16 @@ public class User extends BaseAuditingEntity implements Serializable {
     @Column(name = "version", nullable = false)
     private int version;
 
-
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "users_roles",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Collection<Role> roles;
 
-    @OneToOne(mappedBy = "user", orphanRemoval = true)
-    private VerificationToken verificationToken;
-
-    @OneToOne(mappedBy = "user", orphanRemoval = true)
-    private PasswordResetToken passwordResetToken;
+//    @OneToOne(mappedBy = "user", orphanRemoval = true, fetch = FetchType.LAZY)
+//    @LazyToOne(value = LazyToOneOption.PROXY)
+//    private VerificationToken verificationToken;
+//
+//    @OneToOne(mappedBy = "user", orphanRemoval = true, fetch = FetchType.LAZY)
+//    @LazyToOne(value = LazyToOneOption.PROXY)
+//    private PasswordResetToken passwordResetToken;
 
 }

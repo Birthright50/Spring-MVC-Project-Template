@@ -16,25 +16,23 @@ import java.util.UUID;
  * Created by birthright on 26.02.17.
  */
 @Service
+@Transactional
 public class VerificationEmailService implements IVerificationTokenService {
     @Autowired
     private VerificationTokenRepository tokenRepository;
 
     @Override
-    @Transactional
     public void deleteVerificationToken(VerificationToken verificationToken) {
         tokenRepository.delete(verificationToken);
     }
 
     @Override
-    @Transactional
     public VerificationToken createVerificationToken(User user, String token) {
         VerificationToken myToken = new VerificationToken(token, user);
         return tokenRepository.save(myToken);
     }
 
     @Override
-    @Transactional
     public VerificationToken createNewVerificationToken(String existingToken) {
         VerificationToken verificationToken = findVerificationToken(existingToken);
         if (verificationToken == null) {

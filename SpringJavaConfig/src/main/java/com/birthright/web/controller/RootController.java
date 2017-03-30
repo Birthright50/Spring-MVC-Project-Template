@@ -14,9 +14,12 @@ public class RootController {
      * Show home page
      */
     @GetMapping(Routes.ROOT_URI)
-    public String index() {
-
+    public String index() throws InterruptedException {
         return Routes.ROOT_VIEW;
     }
+
+
+
+
 
 }

@@ -1,4 +1,4 @@
-package com.birthright.infrastructure.configuration.db;
+package com.birthright.infrastructure.root.db;
 
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;

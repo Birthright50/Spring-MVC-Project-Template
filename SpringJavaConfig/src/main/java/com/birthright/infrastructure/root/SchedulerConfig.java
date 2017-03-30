@@ -1,20 +1,18 @@
-package com.birthright.infrastructure.configuration;
+package com.birthright.infrastructure.root;
+
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.TaskScheduler;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
-
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 
 /**
  * Created by birthright on 21.03.17.
  */
 @EnableScheduling
-@EnableAsync
 @Configuration
 public class SchedulerConfig implements SchedulingConfigurer {
     @Override
@@ -22,8 +20,14 @@ public class SchedulerConfig implements SchedulingConfigurer {
         taskRegistrar.setScheduler(taskScheduler());
     }
 
-    @Bean(destroyMethod = "shutdown")
-    public Executor taskScheduler() {
-        return Executors.newScheduledThreadPool(42);
+    @Bean()
+    public TaskScheduler taskScheduler() {
+      //  return Executors.newScheduledThreadPool(12);
+        ThreadPoolTaskScheduler threadPoolTaskScheduler = new ThreadPoolTaskScheduler();
+        threadPoolTaskScheduler.setPoolSize(12);
+        return threadPoolTaskScheduler;
     }
+
+
+
 }

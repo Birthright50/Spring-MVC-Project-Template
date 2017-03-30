@@ -11,11 +11,10 @@ public interface IUserService {
 
     String checkUserIsExists(String username, String email);
 
-    User save(User user);
+    User save(User user, boolean changePassword);
 
     User findUserByEmail(String email);
 
     User changeUserPassword(User user, String password);
 
-    User saveWithPasswordChanging(User user);
 }

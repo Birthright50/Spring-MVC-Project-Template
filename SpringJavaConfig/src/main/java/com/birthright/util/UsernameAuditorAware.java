@@ -20,10 +20,8 @@ public class UsernameAuditorAware implements AuditorAware<String> {
             log.debug("Current user is anonymous. Returning null.");
             return null;
         }
-        System.out.println(authentication.getPrincipal().getClass() + " " + authentication.getPrincipal());
         String username = ((UserDetails) authentication.getPrincipal()).getUsername();
         log.debug("Returning username: {}", username);
-
         return username;
     }
 }

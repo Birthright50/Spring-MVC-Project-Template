@@ -12,13 +12,13 @@ import org.springframework.web.servlet.view.RedirectView;
 /**
  * Created by birth on 01.02.2017.
  */
+
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-
     @ExceptionHandler(NoHandlerFoundException.class)
-    public String pageNotFound() {
-        return "redirect:/404";
+    public RedirectView pageNotFound() {
+        return new RedirectView(Routes.NOT_FOUND_URI);
     }
 
     @ExceptionHandler(MultipartException.class)
@@ -31,4 +31,5 @@ public class GlobalExceptionHandler {
     public RedirectView missingParameter() {
         return new RedirectView(Routes.ROOT_URI);
     }
+
 }

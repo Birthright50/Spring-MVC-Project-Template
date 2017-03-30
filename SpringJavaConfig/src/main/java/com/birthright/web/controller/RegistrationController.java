@@ -89,9 +89,10 @@ public class RegistrationController {
             eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered,
                                                                         localeResolver.resolveLocale(request), appUrl));
         } catch (Exception e) {
-            redirectAttributes.addAttribute(MESSAGE, e.getMessage());
+            redirectAttributes.addFlashAttribute(MESSAGE, e.getMessage());
             return new RedirectView(Routes.ERROR_URI);
         }
+
         return new RedirectView(Routes.REGISTRATION_SUCCESS_URI);
     }
 
