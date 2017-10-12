@@ -4,7 +4,4 @@ $(function () {
     $(document).ajaxSend(function(e, xhr, options) {
         xhr.setRequestHeader(header, token);
     });
-    console.log("test");
-    console.log("test2");
-    console.log("kek");
 });
