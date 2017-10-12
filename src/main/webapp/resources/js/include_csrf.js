@@ -5,4 +5,5 @@ $(function () {
         xhr.setRequestHeader(header, token);
     });
     console.log("test");
+    console.log("test2");
 });
